@@ -1,0 +1,111 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Mind First - Aspirations Edit{% endblock %}
+
+{% block links %}
+<!-- loading static --> 
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/vision_css.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <!-- aspirations -->
+    <section>
+        <div class="d-flex justify-content-between w-100 flex-column flex-md-row p-0">
+            <h2 class="heading-5th--dark-hi wow move-up"
+                style=" letter-spacing: 0.25rem; visibility: visible; animation-name: moveVertical;">
+                Aspirations:
+            </h2>
+
+            <div class="col-11 col-md-4 d-flex justify-content-between align-items-center p-0 wow move-up animate">
+                <button id="delete_btn" class="btn btn-dark mt-3" onclick="ask_delete()" aria-disabled="true" disabled>
+                    <p class="paragraph-2th--light p-2">
+                        Remove Images
+                    </p>
+                </button>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <p class="wow move-up animate">
+            From the images shown, please select the one that best represents the<br>
+            category of your Aspiration. If you wish you can add your own image by clicking the + button <br>
+            and upload it. Once uploaded select your image and this will be the one used in your video.<br>
+            Only one image should be used, thank you.
+        </p>
+        <br>
+
+        <div class='visions w-100'>
+
+            <form id="checkbox_form" action="{% url 'user_files:delete_file' %}" method="POST" class="vision-images-container d-flex flex-wrap">
+                {% csrf_token %}
+
+                {% for image in aspirations %}
+                <div class="vision-images position-relative m-2 wow move-up animate">
+                    <input onchange="check_delete(this)" name="{{ image.file }}" class="checkbox-effect checkbox-effect-5 to_delete" id="asp_id_{{ forloop.counter }}" type="checkbox"/>
+                    <label for="asp_id_{{ forloop.counter }}"></label>
+
+                    <img src="{% static '' %}media/{{ image.file }}" class="h-100 w-100 asp_image">
+                </div>
+                {% endfor %}
+
+                <label for="file_upload" class="vision-images m-2 wow move-up animate" id="add-visions" title="add image">
+                    <i class="fa fa-plus"></i>
+                </label>
+                <input type="submit" value="upload" hidden>
+            </form>
+        </div>
+
+
+        <form action="{% url 'user_files:upload_files' %}" method="POST" id="upload_files" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input id="file_upload" type="file" name="aspirations_upload" onchange="upload(event)" style="visibility: hidden;">
+            <input type="submit" value="upload" hidden>
+        </form>
+        
+        <br>
+        <p class="wow move-up animate">Note: You can only have one image</p>
+
+    </section>
+
+<!-- modals -->
+    <!-- confirm delete modal -->
+    <div class="modal_video" id="confirm_deletion">
+        <div class="container d-flex">
+            <div class="m-auto bg-light col-12 col-md-6 other_modals_1 py-3">
+                <h3 class="text-center heading-7th--dark-hi">Do you want to remove this/these images from your gallery?</h3>
+                <br>
+                <div class="d-flex justify-content-around">
+                    <!-- confirm to delete the images -->
+                    <button id="confirm" class="btn btn--primary" onclick="actual_delete()">Yes</button>
+                    <!-- close the modal -->
+                    <button class="btn btn-dark" onclick="close_delete()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="#" onclick='leaving()' class="my-5 btn btn--primary wow move-up animate">Save</a>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'main/js/visions.js' %}"></script>
+<script>
+    function leaving() {
+        var images = $('body').find('.asp_image')
+        if (images.length == 1) {
+            window.location.href = "/vision-gallery";
+        } else {
+            alert('You need to have one image')
+        }
+    }
+</script>
+{% endblock %}

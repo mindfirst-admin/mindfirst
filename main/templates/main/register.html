@@ -1,0 +1,125 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Mind First - SignUp{% endblock %}
+
+{% block links %}
+{% endblock %}
+
+{% block content %}
+<!-- End Section Banner Static -->
+<div class="section-content-main">
+    <div class="container">
+        <div class="row">
+            <!-- Start Content -->
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sign__title heading-4th--dark-hi">
+                            Create Account
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <form action="{% url 'users:register_user' %}" class="sign__form" method="post">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+
+                            <div class="sign__group">
+                                <input name="email" id="email" type="text" class="sign__input heading-7th--dark-md"
+                                       placeholder="Email*" required>
+                                <label for="email" class="sign__label heading-9th--dark-md">Email*</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+
+                            <div class="sign__group">
+                                <input name="phone" id="phone" type="text" class="sign__input heading-7th--dark-md"
+                                       placeholder="Phone">
+                                <label for="phone" class="sign__label heading-9th--dark-md">Phone</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="sign__wrap">
+                                <div class="sign__checkbox--group">
+                                    <input type="checkbox" class="sign__checkbox--input" id="iAgree" name="agreed"
+                                           required>
+                                    <label for="iAgree" class="sign__checkbox--label heading-8th--dark-hi">
+                                        <span class="sign__checkbox--button"></span>
+                                        I agree to the <a href="{% url 'main:terms_and_conditions' %}">Terms & conditions</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="sign__wrap">
+                                {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                    <li>
+                                        <h3>{{ message }}</h3>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                <br>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="sign__wrap">
+                                <button type="submit" class="sign__btn btn btn--primary">Create Account</button>
+                                <span class="mx-3"></span>
+                                <a href="{% url 'main:login' %}" class="sign__btn btn btn--secondary">
+                                    Login Now
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End Content -->
+
+            <!-- Start Content Right -->
+            <div class="col-lg-6">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sign__title heading-4th--dark-hi">
+                            Sign up on Mind First
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sign__paragraph paragraph-2th--dark-md">
+                            Congratulations on taking the first step to designing a fulfilling life. The power this brings is transformational;
+                            this is not based on blind faith or hope; you are not alone.
+                            Thousands of others have followed this same path and are now
+                            living their lives as they want on their terms; by joining us, you have started that same journey.
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="sign__wrap">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Content Right -->
+        </div>
+    </div>
+</div>
+<!-- End Section Content Main -->
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

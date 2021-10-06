@@ -1,0 +1,210 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Mind First - Limiting Beliefs{% endblock %}
+<!-- loading static -->
+{% load static %}
+
+{% block links %}
+<style>
+    #canvas-container {
+      overflow-x: auto;
+      overflow-y: visible;
+      position: relative;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .canvas {
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .canvas.hide {
+      display: none;
+    }
+    
+    #html-canvas>span {
+      transition: text-shadow 1s ease, opacity 1s ease;
+      -webkit-transition: text-shadow 1s ease, opacity 1s ease;
+      -ms-transition: text-shadow 1s ease, opacity 1s ease;
+    }
+
+    #html-canvas>span:hover {
+      text-shadow: 0 0 10px, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #fff;
+      opacity: 0.5;
+    }
+
+    .add::after {
+      position: absolute;
+      content: '';
+      top: -7px;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      width: 70px;
+      height: 1px;
+    }
+
+    .tabbable{
+      font-family: 'Work Sans', sans-serif;
+      font-style: normal;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+      line-height: 2rem;
+      letter-spacing: 0.025rem;
+      text-transform: none;
+      font-weight: 400;
+    }
+    textarea {
+      height: 20em;
+      font-family: 'Work Sans', sans-serif;
+      font-style: normal;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+      line-height: 2rem;
+      letter-spacing: 0.025rem;
+      text-transform: none;
+      font-weight: 400;
+    }
+
+    #config-option {
+      font-family: monospace;
+    }
+
+    select {
+      width: 100%;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div id="not-supported" class="alert" hidden>
+        <strong>Your browser is not supported.</strong>
+    </div>
+    <form id="form" method="get" action="">
+        <div class="row">
+            <h1 class="my-1 heading-4th--dark wow move-up  mt-5">Limiting Beliefs</h1>
+            <div class="span12 my-4 col-12" id="canvas-container">
+                <canvas id="canvas" class="canvas"></canvas>
+                <div id="html-canvas" class="canvas hide"></div>
+            </div>
+            <div class="info-text ml-2">
+                <h3 class="info-title heading-6th--dark wow move-up animate my-4">How To Create Your Limiting Beliefs
+                    Word Cloud</h3>
+                <p class="paragraph-2th wow move-up animate ml-1 position-relative add">
+                    It is important you recognise and celebrate your achievements, too often we under value the
+                    achievements we have made, things you have done and can be proud of, the things others have
+                    recognised in you, the qualities others admire about you. <br><br>
+                    We have added an example using the word 'Love' in different languages to illustrate how to write
+                    your achievements list. When you are ready to start delete the example list and add your own
+                    achievements list. The number before each word sets the font size in the image produced, the larger
+                    the number the bigger the font size of the word in the image.<br><br>
+
+                    When choosing a number, choose a number from 1-12, think of it as the higher the number the greater
+                    the significance of that
+                    achievement to you. Single words work best, but you can write short phrases also, the more words
+                    used
+                    the small the font size needs to be so use say the number 5 for a phrase containing a few words.
+                    <br><br>
+
+                    When you have finished writing your list click the create button to see what it looks like, if a
+                    phrase
+                    or word does not show lower the number for it. If you are happy with the image, click the 'Save'
+                    button.
+                    This will be used to create your daily personalised 'Positive Start' video, which you will view each
+                    day
+                    to get your mindset focused and your day off to the best possible start. If you wish to download the
+                    image you can by clicking the 'Download' button. Thank you
+                    <br><br>
+                </p>
+            </div>
+            <div class="span6 buttons col-md-12 col-lg-8 d-flex flex-wrap wow move-up animate">
+                <button class=" btn btn--primary col-md-2 my-2 text-light" type="submit">Create</button>
+                <a class="btn btn-primary col-md-2 my-2 mx-md-2" href="#" onclick="saveCanvas()" title="Save canvas">Save</a>
+                <a class="btn btn-warning col-md-2 my-2 mr-md-2 text-light" href="#" download="wordcloud.png" title="Download canvas">Download</a>
+                <a class="btn btn-danger col-md-2 my-2 text-light" onclick="clearTextBox()">Clear</a>
+            </div>
+
+        </div>
+        <div class="tabbable my-4">
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab-list">
+                    <textarea id="input-list" placeholder="Put your list here." rows="2" cols="30"
+                              class="span12 w-100 form-control" style="min-height: 55vh; font-size: 16px;">{{ data }}</textarea>
+                </div>
+                <div class="tab-pane" id="tab-config">
+                    <label>Options as a literal Javascript object</label>
+                    <textarea id="config-option" placeholder="Put your literal option object here." rows="2" cols="30"
+                      class="span12"></textarea>
+                    <span class="help-block">See <a
+                        href="https://github.com/timdream/wordcloud2.js/blob/gh-pages/API.md">API</a> document for available
+                      options.</span>
+                  </div>
+                  <div class="tab-pane" id="tab-dim">
+                    <label for="config-width">Width</label>
+                    <div class="input-append">
+                      <input type="number" id="config-width" class="input-small" min="1">
+                      <span class="add-on">px</span>
+                    </div>
+                    <span class="help-block">Leave blank to use page width.</span>
+                    <label for="config-height">Height</label>
+                    <div class="input-append">
+                      <input type="number" id="config-height" class="input-small" min="1">
+                      <span class="add-on">px</span>
+                    </div>
+                    <span class="help-block">Leave blank to use 0.65x of the width.</span>
+                    <label for="config-height">Device pixel density (<span title="Dots per 'px' unit">dppx</span>)</label>
+                    <div class="input-append">
+                      <input type="number" id="config-dppx" class="input-mini" min="1" value="1" required>
+                      <span class="add-on">x</span>
+                    </div>
+                    <span class="help-block">Adjust the weight, grid size, and canvas pixel size for high pixel density
+                      displays.</span>
+                  </div>
+                  <div class="tab-pane" id="tab-mask">
+                    <label for="config-mask">Image mask</label>
+                    <input type="file" id="config-mask"><button id="config-mask-clear" class="btn" type="button">Clear</button>
+                    <span class="help-block">A silhouette image which the white area will be excluded from drawing texts. The
+                      <code>shape</code> option will continue to apply as the shape of the cloud to grow.</span>
+                    <span class="help-block">When there is an image set, <code>clearCanvas</code> will be set to
+                      <code>false</code>.</span>
+                  </div>
+                  <div class="tab-pane" id="tab-webfont">
+                    <label for="config-css">Extra Web Font CSS</label>
+                    <input type="url" id="config-css" size="40" class="input-xxlarge"
+                      placeholder="https://fonts.googleapis.com/css?family=Libre+Baskerville:700"
+                      value="https://fonts.googleapis.com/css?family=Finger+Paint">
+                    <span class="help-block">Find your favorite font on <a href="https://www.google.com/webfonts">Google Web
+                        Fonts</a>. Re-run if the font didn't load in time.</span>
+                  </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'main/js/wordcloud.js' %}"></script>
+<script src="{% static 'main/js/index.js' %}"></script>
+<script>
+    function saveCanvas() {
+    var texts = $("#input-list").val()
+    $.ajax({
+        type: "POST",
+        url: "{% url 'characters:update_beliefs' %}",
+        data: {csrfmiddlewaretoken: '{{ csrf_token }}',
+            data: texts
+        },
+        success: function (data) {
+            console.log(data)
+        }
+    });
+    }
+
+    function clearTextBox() {
+      $("#input-list").val('')
+    }
+</script>
+{% endblock %}

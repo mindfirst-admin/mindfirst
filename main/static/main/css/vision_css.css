@@ -1,0 +1,253 @@
+#hover-show-div img {
+  object-fit: cover;
+  object-position: center;
+  max-width: 100%;
+  height: 400px;
+  max-height: 100% !important;
+}
+
+.vision-images {
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  position: relative;
+}
+
+.vision-images label {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  cursor: pointer;
+}
+.vision-images i {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vision-images img {
+  object-position: center;
+  object-fit: cover;
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+
+.vision-images#add-visions {
+  cursor: pointer;
+}
+
+.other_modals_1 {
+  border-radius: 10px;
+}
+
+@media (max-width: 576px) {
+  .vision-images {
+    border: 1px solid rgba(0, 0, 0, 0.6);
+  }
+  .vision-images i {
+    font-size: 15px;
+  }
+  #hover-show-div img {
+    height: 300px;
+  }
+}
+
+/*tea loader*/
+svg.tea {
+  --secondary: rgba(0, 0, 0, 0.87);
+}
+svg.tea #teabag {
+  transform-origin: top center;
+  transform: rotate(3deg);
+  animation: swing 2s infinite;
+}
+svg.tea #steamL {
+  stroke-dasharray: 13;
+  stroke-dashoffset: 13;
+  animation: steamLarge 2s infinite;
+}
+svg.tea #steamR {
+  stroke-dasharray: 9;
+  stroke-dashoffset: 9;
+  animation: steamSmall 2s infinite;
+}
+@-moz-keyframes swing {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+@-webkit-keyframes swing {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+@-o-keyframes swing {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes swing {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+@-moz-keyframes steamLarge {
+  0% {
+    stroke-dashoffset: 13;
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 39;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes steamLarge {
+  0% {
+    stroke-dashoffset: 13;
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 39;
+    opacity: 0;
+  }
+}
+@-o-keyframes steamLarge {
+  0% {
+    stroke-dashoffset: 13;
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 39;
+    opacity: 0;
+  }
+}
+@keyframes steamLarge {
+  0% {
+    stroke-dashoffset: 13;
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 39;
+    opacity: 0;
+  }
+}
+@-moz-keyframes steamSmall {
+  10% {
+    stroke-dashoffset: 9;
+    opacity: 0.6;
+  }
+  80% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes steamSmall {
+  10% {
+    stroke-dashoffset: 9;
+    opacity: 0.6;
+  }
+  80% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+}
+@-o-keyframes steamSmall {
+  10% {
+    stroke-dashoffset: 9;
+    opacity: 0.6;
+  }
+  80% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+}
+@keyframes steamSmall {
+  10% {
+    stroke-dashoffset: 9;
+    opacity: 0.6;
+  }
+  80% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+}
+
+/* for checkbox */
+.checkbox-effect:not(:checked),
+.checkbox-effect:checked {
+  position: absolute;
+  left: -9999px;
+}
+
+.checkbox-effect-5:not(:checked) + label:before,
+.checkbox-effect-5:checked + label:before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #5a5a5a;
+  background: #5a5a5a;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-right: 20px;
+  transform-origin: center center;
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+
+.checkbox-effect-5:checked + label:after {
+  content: "\2713";
+  font-family: fontawesome;
+  font-size: 12px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 1px;
+  color: #fff;
+}
+
+.checkbox-effect-5:not(:checked) + label:after {
+  opacity: 0;
+}
+
+.checkbox-effect-5:checked + label:before {
+  transform: scale(1.5);
+  background-color: rgba(17, 189, 163, 0.87);
+  border-color: rgba(17, 189, 163, 0.87);
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.57, 1.9, 0, 1.52);
+  transition-delay: 0s;
+}
+
+.checkbox-effect-5:checked + label:after {
+  opacity: 1;
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0.2s;
+}

@@ -1,0 +1,156 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Mind First - Habit Reporting{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"/>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+{% endblock %}
+
+{% block content %}
+
+<!-- loading static -->
+{% load static %}
+<div class="container-fluid mt-4 mb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for behavior in behaviors %}
+                    <div class="swiper-slide">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 ">
+                                <div class="boxdevgray move-up  animate border">
+                                    <div style="opacity: 0.8; background: black"
+                                         class="over-lay p-4 bg-dark text-white text-center">
+                                        <h1 style="font-weight:200; text-transform: capitalize">{{ behavior.title }}</h1>
+                                    </div>
+                                    <div class="img-box">
+                                        <img src="{% static 'media/' %}{{ aspiration_image }}"
+                                             style="width: 100%;height: 246px;object-fit: cover;display: block;max-width: 100%;max-height: 100%;"
+                                             alt="aspiration" class="img-responsive"/>
+                                    </div>
+                                    <div class="p-4">
+                                        <form method="post" action="#">
+                                            <div class="m-2">
+                                                <label class="text-dark" style="font-size: 1.4rem;margin:7px -2px;"><u>My
+                                                    habit is triggered when...</u></label>
+                                                <p><i>{{ behavior.badhabitdesign.trigger }}</i></p>
+                                            </div>
+                                            <div class="m-2">
+                                                <label class="text-dark" style="font-size: 1.4rem;margin:7px -2px;"><u>I
+                                                    can make my habit less obvious by...</u></label>
+                                                <p>{{ behavior.badhabitdesign.make_less_obvious }}</p>
+                                            </div>
+                                            <div class="m-2">
+                                                <label class="text-dark" style="font-size: 1.4rem;margin:7px -2px;"><u>I
+                                                    can make the habit harder to do by...</u></label>
+                                                <p>{{ behavior.badhabitdesign.make_harder }}</p>
+                                            </div>
+                                    <hr>
+                                    <div class="container p-2">
+                                        <div class="row">
+                                            <div class="col-md-6 text-left">
+                                                <label class="text-dark" style="font-size: 1.5rem;margin:7px -2px;">Did you resist your habit?</label>
+                                            </div>
+                                            <div class="col-md-6 custom-col text-right">
+                                                <i class="swiper-mov2 fa fa-thumbs-up btn btn-success up-btn scroll-sideways"
+                                                   onclick="thumbsUp({{ behavior.id }})"></i>
+                                                <i class="swiper-mov2 fa fa-thumbs-down btn btn-danger scroll-sideways"
+                                                   onclick="thumbsDown({{ behavior.id }})"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                                <div class="container">
+                                    <div class="row justify-content-between p-4">
+                                        <div class="col-md-3 p-2 text-center">
+                                            <a class="btn btn--primary mr-2 text-light w-100"
+                                               onclick="edit({{ behavior.id }})">Edit</a>
+                                        </div>
+                                        <div class="col-md-3 p-2 text-center">
+                                            <a class="btn btn-danger mr-2 text-light w-100"
+                                               onclick="delete_id({{ behavior.id }})">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="congrats" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered bg-transparent" role="document">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-body">
+                <img src="{% static 'main/assets/revision.gif' %}" alt="congrats gif" style="width: 100%">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'main/js/habit.js' %}"></script>
+<script>
+
+// message in popup
+// Tap thumb up icon (habit done) or thumb down icon (habit not done) to record how you did today. Thank you 
+
+console.log(varCase.swiperDiv)
+
+function thumbsUp(id) {
+  // thumbs up
+  $.ajax({
+      type: "POST",
+      url: "/characters/record-habit",
+      data: {
+          'thumbsUp': id
+      },
+      success: function () {
+          console.log('done')
+      }
+  });
+}
+
+function thumbsDown (id) {
+  // thumbs down
+  $.ajax({
+      type: "POST",
+      url: "/characters/record-habit",
+      data: {
+          'thumbsDown': id
+      },
+      success: function () {
+          console.log('done')
+      }
+  });
+}
+
+function delete_id(id) {
+  data = {'id': id}
+
+  $.ajax({
+    type: "POST",
+    url: "/characters/delete-behaviour",
+    data: {
+        'data': JSON.stringify(data) // from form
+    },
+    success: function () {
+        console.log('done')
+        location.reload()
+    }
+  });
+}
+
+
+</script>
+{% endblock %}

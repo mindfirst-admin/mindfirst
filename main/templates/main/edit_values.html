@@ -1,0 +1,92 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Mind First - Values Edit{% endblock %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/vision_css.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <!-- your values -->
+    <section>
+        <div class="d-flex justify-content-between w-100 flex-column flex-md-row p-0">
+            <h2 class="heading-5th--dark-hi wow move-up"
+                style=" letter-spacing: 0.25rem; visibility: visible; animation-name: moveVertical;">
+                Your values:
+            </h2>
+        </div>
+        <br>
+        <p>This gallery works similarly to the ‘Aspiration Gallery,’ but here, you will remove <br>
+            values to have three-five values left that best reflect the values you feel best to represent <br>
+            the Aspiration you are working towards.
+        </p>
+        <br>
+
+        <div class='visions w-100'>
+
+            <form id="add_to_values" action="{% url 'user_files:add_to_values' %}" method="POST" class="vision-images-container d-flex flex-wrap">
+                {% csrf_token %}
+
+                {% for image in images %}
+                <div class="vision-images position-relative m-2">
+                    {% if image.check %}
+                    <input checked name='{{ image.url }}' class="checkbox-effect checkbox-effect-5 asp_image" id='val_id_{{ forloop.counter }}' type="checkbox"/>
+                    {% else %}
+                    <input name='{{ image.url }}' class="checkbox-effect checkbox-effect-5 " id='val_id_{{ forloop.counter }}' type="checkbox"/>
+                    {% endif %}
+                    <label for='val_id_{{ forloop.counter }}'></label>
+
+                    <img src="{% static '' %}media/{{ image.url }}" class="h-100 w-100">
+                </div>
+                {% endfor %}
+
+                <input type="submit" value="check" hidden>
+            </form>
+            
+        </div>
+
+        <br>
+        <p>Note: You can have between three and five images</p>
+
+    </section>
+
+    <!-- confirm delete modal -->
+    <div class="modal_video" id="confirm_deletion">
+        <div class="container d-flex">
+            <div class="m-auto bg-light col-12 col-md-6 other_modals_1 py-3">
+                <h3 class="text-center heading-7th--dark-hi">Do you want to remove this/these images from your gallery?</h3>
+                <br>
+                <div class="d-flex justify-content-around">
+                    <!-- confirm to delete the images -->
+                    <button id="confirm" class="btn btn--primary" onclick="actual_delete()">Yes</button>
+                    <!-- close the modal -->
+                    <button class="btn btn-dark" onclick="close_delete()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="#" onclick="leaving()" class="my-5 btn btn-outline-secondary">Go back</a>
+    <span class="m-3"></span>
+    <a href="#" onclick='save_images()' class="my-5 btn btn--primary">Save</a>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'main/js/visions.js' %}"></script>
+<script>
+    function leaving() {
+        var images = $('body').find('.asp_image')
+        if (images.length >= 3 && images.length <= 5) {
+            window.location.href = "/vision-gallery";
+        } else {
+            alert('You need to have between three and five images')
+        }
+    }
+</script>
+{% endblock %}

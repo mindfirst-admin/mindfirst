@@ -1,0 +1,401 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Mind First - Behaviour Mapping{% endblock %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/behaviour.css' %}">
+<style>
+    /* .map-buttons:nth-child(1),
+    .map-buttons:nth-child(2) {
+        width: 100px;
+    } */
+    @media (max-width: 567px) {
+        .map-buttons {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- loading static -->
+{% load static %}
+<!-- Start Section Title -->
+<div class="section-call-to-action-v4">
+    <div class="container">
+
+        <!-- Sstart Title  -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="ut--c umb--12 " x-data="{ name: '{{ aspiration_name }}', isEditing: false }">
+                    <div class="row" x-show="!isEditing">
+                        <div class="col-md-12">
+                            <h1 class="call-v3__title heading-3th--dark-hi" x-text="name"></h1>
+                            <i class=" fa fa-edit ml-2" x-on:click="isEditing=true" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row" x-show="isEditing">
+                        <form action="{% url 'characters:change_aspiration_name' %}" method="POST" class="col-md-12">
+                            {% csrf_token %}
+                            <input class="form-control" required type="text" x-model="name" name="name" id="asp_title">
+                            <button class="btn btn-success ml-2" x-on:click="isEditing=false">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Title -->
+
+
+    </div>
+</div>
+<!-- End Section Title  -->
+<div class="container-fluid mt-4">
+
+    <div class="mt-5 pt-3 mx-4" x-data="behaviorMapping()" x-init="init()">
+        <div class="w-100 d-flex flex-wrap align-items-center justify-content-between">
+            <div class="col-md-7 col-lg-8 col-xl-9 main-heading p-0 p-md-1">
+                <h1 class="text-dark">Behaviour Mapping Grid</h1>
+            </div>
+    
+            <div class="col-md-5 col-lg-4 col-xl-3 p-0 p-md-1">
+                <button onclick="save()" class="col-md-3 map-buttons btn btn-primary">Save</button>
+                <button class="col-md-3 map-buttons btn btn-warning text-light my-1 m-0" onclick="printDiv('printableArea')">Print</button>
+                <button class="map-buttons btn btn--primary" x-on:click="addNew()">Add New</button>
+            </div>
+        </div>
+
+        <div class="w-100 row">
+            <div id="printableArea" class="col-lg-9 px-4 graph-col ">
+                <div class="row pr-2">
+                    <div class="col-6 border-rb positive-impact negative-feasibility">
+    
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="5" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="5" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="5" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="5" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="5" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="4" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="4" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="4" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="4" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="4" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="3" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="3" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="3" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="3" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="3" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="2" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="2" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="2" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="2" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="2" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="1" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="1" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="1" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="1" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="1" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-md-12 text-danger d-sm-none"><h3>Hard -5</h3></div>
+                        </div>
+                    </div>
+                    <div class="col-6 border-lb positive-impact positive-feasibility">
+                        <div class="row">
+                            <div class="col-md-12 text-warning d-sm-none"><h3>Impact +5</h3></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="5" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="5" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="5" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="5" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="5" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="4" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="4" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="4" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="4" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="4" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="3" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="3" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="3" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="3" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="3" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="2" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="2" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="2" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="2" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="2" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="1" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="1" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="1" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="1" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="1" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-warning text-right d-sm-none"><h3>Easy +5</h3></div>
+                        </div>
+                    </div>
+                    <div class="col-6 border-rt negative-impact negative-feasibility">
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="-1" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="-1" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-1" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-1" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-1" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="-2" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="-2" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-2" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-2" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-2" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="-3" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="-3" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-3" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-3" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-3" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="-4" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="-4" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-4" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-4" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-4" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box offset-md-2 offset-sm-0" data-impact="-5" data-feasibility="-5">
+                                &nbsp;
+                            </div>
+                            <div class="col-2 behavior-box" data-impact="-5" data-feasibility="-4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-5" data-feasibility="-3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-5" data-feasibility="-2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-5" data-feasibility="-1">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="col-6 border-lt negative-impact positive-feasibility">
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="-1" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-1" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-1" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-1" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-1" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="-2" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-2" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-2" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-2" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-2" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="-3" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-3" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-3" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-3" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-3" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="-4" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-4" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-4" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-4" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-4" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 behavior-box" data-impact="-5" data-feasibility="1">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-5" data-feasibility="2">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-5" data-feasibility="3">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-5" data-feasibility="4">&nbsp;</div>
+                            <div class="col-2 behavior-box" data-impact="-5" data-feasibility="5">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-danger d-sm-none"><h3>Impact -5</h3></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div id="round-circle" class="round-circle"></div> -->
+            </div>
+    
+            <div class="col-lg-3 d-none border form-col p-4">
+                <form action="" id="behaviorForm" x-ref="behaviorForm">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="heading">Title</label>
+                                <input type="text" x-model="heading" id="heading" class="form-control"
+                                       placeholder="Enter Behavior Title" required>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea type="text" x-model="description" id="description" class="form-control"
+                                          placeholder="Enter Behavior Description" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <div class="row">
+                                <div class="col-5 align-center">
+                                    <label for="behavior">Behavior</label>
+                                </div>
+                                <div class="col-7">
+                                    <div class="row">
+                                        <input class="clip" type="checkbox" id="check" x-model="behavior">
+                                        <label class="flex items-center pa3" for="check">
+                                            <span aria-hidden="true" class="flex items-center w2 h1 ba bw1 br-pill"
+                                                  :class="behavior ? 'bg-blue b--blue' : 'bg-gray b--gray'">
+                                                <span class="db w-50 h-100 br-100 bg-white" style="margin-top:1px;"
+                                                      :class="behavior ? 'ml-auto' : ''"></span>
+                                            </span>
+                                            <span class="ml2 gray" :class="behavior? 'text-success':'text-danger'"
+                                                  x-text="behavior? '+ve':'-ve'"></span>
+                                        </label>
+                                        <span class="text-danger d-none">Behavior Should be +ve or -ve</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <div class="row"> 
+                                <div class="col-5 align-center">
+                                    <label for="impact">Impact</label>
+                                </div>
+                                <div class="col-7">
+                                    <div class="row">
+                                        <div class="col-12 text-center text-dark" x-text="impact"></div>
+                                        <div class="col-12">
+                                            <input class="form-control" type="range" min="-5" max="5" x-ref="impact"
+                                                   x-on:change="setValue('impact')" id="impact" required>
+                                            <span class="text-danger d-none">Impact Should not be 0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <div class="row">
+                                <div class="col-5 align-center">
+                                    <label for="feasibility">Difficulty</label>
+                                </div>
+                                <div class="col-7">
+                                    <div class="row">
+                                        <div class="col-12 text-center text-dark" x-text="feasibility"></div>
+                                        <div class="col-12">
+                                            <input class="form-control" type="range" min="-5" max="5" x-ref="feasibility"
+                                                   x-on:change="setValue('feasibility')" id="feasibility" required>
+                                            <span class="text-danger d-none">Difficulty Should not be 0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-danger already d-none">Please change Difficulty or Impact. Another behvior exists on this location.</span>
+                        </div>
+                        <div class="col-12 pt-5 text-right">
+                            <button type="button" class="btn btn-primary save-btn" x-on:click="addBehavior()">Save</button>
+                            <button type="button" class="btn btn-primary update-btn d-none" x-on:click="updateBehavior()">
+                                Update
+                            </button>
+                            <button type="button" class="btn btn-outline-dark" x-on:click="resetFields()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 form-col-list">
+                <div class="row mt-3">
+                    <div class="col-12 list-col">
+                        <template x-for="(item, index) in behaviors" :key="index">
+                            <div id="" x-bind:id="item.id" class="card behavior behavior_cards" x-bind:class="'behavior-'+item.id"
+                                 x-on:click="selectBehavior(index)">
+                                <div class="card-body">
+                                    <div class="float-right"><i class="fa fa-trash remove-behavior"
+                                                                @click.prevent="removeBehavior(index)"
+                                                                aria-hidden="true"></i></div>
+                                    <h5 class="card-title" x-text="item.heading"></h5>
+                                    <p class="card-text" x-text="item.description"></p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js"></script>
+<script src="{% static 'main/js/behaviour.js' %}"></script>
+<script>
+    function save() {
+        var asp_title = $("#asp_title").val()
+        if (asp_title == '') {
+            alert('Please write the title of your aspiration before saving')
+        } else {
+            var cards = $(".behavior_cards.active")
+            var id_array = []
+            for (var i=0; i < cards.length; i++) {
+                id_array.push(cards[i].id)
+            }
+            $.ajax({
+                type: "POST",
+                url: "{% url 'characters:select_behavior' %}",
+                data: {
+                    'data': JSON.stringify(id_array) // from form
+                },
+                success: function (data, status) {
+                    if (status == 'success') {
+                        window.location.href = "{% url 'main:members_area' %}";
+                    }
+                    console.log(status)
+
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}

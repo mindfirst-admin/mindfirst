@@ -1,0 +1,155 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Mind First - Habit designer{% endblock %}
+
+{% block links %}
+{% endblock %}
+
+{% block content %}
+
+<!-- loading static -->
+{% load static %}
+<div class="container-fluid mt-4 mb-5">
+    <div class="row">
+          <div class="col-sm-12 col-md-4 ">
+            <div class="boxdevgray move-up  animate border">
+              <div style="opacity: 0.8; background: black" class="over-lay p-4 bg-dark text-white text-center">
+                  <h1  style="font-weight:200; text-transform: capitalize">{{ behavior.title }}</h1>
+              </div>
+              <div class="img-box">
+                <img src="{% static '' %}media/{{ aspiration_image }}" style="width: 100%;height: 246px;object-fit: cover;display: block;max-width: 100%;max-height: 100%;" alt="asp_image" class="img-responsive"/>
+              </div>
+                <div class="p-4">
+                  <form method="post" action="{% url 'characters:design_good_habit' %}" id="habit_design_form">
+                    {% csrf_token %}
+
+                    {% if habit_design %}
+                        <div class="m-2">
+                            <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">After or before I . . .</label>
+                            <input type="text" class="form-control" name="before_after" value="{{ habit_design.after_or_before }}" required>
+                        </div>
+                        <div class="m-2">
+                            <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">I will . . .</label>
+                            <input type="text" class="form-control" name="act_" required value="{{ habit_design.act }}">
+                        </div>
+                        <div class="m-2">
+                            <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">And I will celebrate by doing . . .</label>
+                            <select class="form-control" name="celebrate" required>
+                                <option>Select One</option>
+                                <option value="smile" {% if habit_design.celebrate == "smile" %}selected {% endif %}>Smile</option>
+                                <option value="travel" {% if habit_design.celebrate == "travel" %}selected {% endif %}>Travel</option>
+                            </select>
+                        </div>
+                        <div class="m-2 d-flex flex-wrap justify-content-between">
+                          <div class="w-100">
+                            <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">No. Of Times</label>
+                            <select value="" id="number_of_times" class="form-control" name="number_of_times" required>
+                                <option>Select One</option>
+                                <option value="1" {% if habit_design.number_of_times == "1" %}selected {% endif %}>1</option>
+                                <option value="2" {% if habit_design.number_of_times == "2" %}selected {% endif %}>2</option>
+                                <option value="3" {% if habit_design.number_of_times == "3" %}selected {% endif %}>3</option>
+                                <option value="4" {% if habit_design.number_of_times == "4" %}selected {% endif %}>4</option>
+                                <option value="5" {% if habit_design.number_of_times == "5" %}selected {% endif %}>5</option>
+                                <option value="6" {% if habit_design.number_of_times == "6" %}selected {% endif %}>6</option>
+                                <option value="7" {% if habit_design.number_of_times == "7" %}selected {% endif %}>7</option>
+                                <option value="8" {% if habit_design.number_of_times == "8" %}selected {% endif %}>8</option>
+                                <option value="9" {% if habit_design.number_of_times == "9" %}selected {% endif %}>9</option>
+                            </select>
+                          </div>
+                            <div class="w-100">
+                              <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">Habit Frequency</label>
+                              <select id="frequecy" class="form-control" name="frequency" required>
+                                  <option>Select One</option>
+                                  <option value="daily" {% if habit_design.frequency == "daily" %}selected {% endif %}>Daily</option>
+                                  <option value="weekly" {% if habit_design.frequency == "weekly" %}selected {% endif %}>Weekly</option>
+                              </select>
+                            </div>
+                        </div>
+                    {% else %}
+                    <div class="m-2">
+                      <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">After or before I . . .</label>
+                      <input type="text" class="form-control" name="before_after" required>
+                  </div>
+                  <div class="m-2">
+                      <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">I will . . .</label>
+                      <input type="text" class="form-control" name="act_" required>
+                  </div>
+                  <div class="m-2">
+                      <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">And I will celebrate by doing . . .</label>
+                      <select class="form-control" name="celebrate" required>
+                          <option>Select One</option>
+                          <option value="smile">Smile</option>
+                          <option value="travel">Travel</option>
+                      </select>
+                  </div>
+                  <div class="m-2 d-flex flex-wrap justify-content-between">
+                    <div class="w-100">
+                      <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">No. Of Times</label>
+                      <select value="" id="number_of_times" class="form-control" name="number_of_times" required>
+                          <option>Select One</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                      </select>
+                    </div>
+                      <div class="w-100">
+                        <label class="text-dark" style="font-size: 2rem;margin:7px -2px;">Habit Frequency</label>
+                        <select id="frequecy" class="form-control" name="frequency" required>
+                            <option>Select One</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                        </select>
+                      </div>
+                  </div>
+                    {% endif %} 
+                    <input type="text" id="behavior_id" value="{{ behavior.id }}" name="behavior_id" hidden>
+
+                  </form>
+                </div>
+                <div class="container">
+                  <div class="row justify-content-between p-4">
+                    <div class="col-md-3 p-2 text-center">
+                      <a onclick="save()" class="btn btn-primary mr-2 text-light w-100">Save</a>
+                    </div>
+                    <div class="col-md-3 p-2 text-center">
+                      <a onclick="delete_id({{ behavior.id }})" class="btn btn-danger mr-2 text-light w-100">Delete</a>
+                    </div>
+                  </div>   
+                </div>
+                </div>
+            </div>
+          </div>
+    </div>  
+</div>  
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function delete_id(id) {
+    data = {'id': id}
+
+    $.ajax({
+      type: "POST",
+      url: "/characters/delete-behaviour",
+      data: {
+          'data': JSON.stringify(data) // from form
+      },
+      success: function () {
+          console.log('done')
+          window.location.href = "{% url 'main:members_area' %}";
+      }
+    });
+  }
+
+  function save() {
+    $("#habit_design_form").submit()
+  }
+</script>
+{% endblock %}

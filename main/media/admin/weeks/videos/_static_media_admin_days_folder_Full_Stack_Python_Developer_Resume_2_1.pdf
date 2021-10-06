@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Style Css -->
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" type="text/css" href="/static/main/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/main/css/index.css">
+    <title>Mind First - Day 1 - Aspirations </title>
+    
+<style>
+    .float_image_text img {
+        max-width: 50%;
+        min-width: 30%;
+        min-height: 80%;
+        object-fit: cover;
+        max-height: 30vh;
+    }
+
+    .float_image_text p {
+        width: 50%;
+    }
+
+    .video_cover {
+        height: 50vh;
+    }
+
+    .video_cover video {
+        width: auto;
+        height: 100%;
+    }
+
+    @media (max-width: 576px) {
+        .video_cover {
+            height: auto;
+        }
+        .video_cover video {
+            width: 100%
+        }
+
+        .float_image_text p {
+            font-size: 11px;
+        }
+    }
+</style>
+
+</head>
+<body>
+<!-- navbar -->
+<div class="header ">
+    <!-- Start Nav -->
+    <div class="nav ">
+        <div class="container ">
+            <div class="nav__row align-items-center ">
+
+                <!-- Start Logo -->
+                <div class="nav__15percent ">
+                    <div class="nav__logo-box ">
+                        <a href="/ " class="nav__logo-link ">
+                            <img src="/static/main/assets/logo.png" alt="Logo ">
+                        </a>
+                    </div>
+                </div>
+                <!-- End Logo -->
+
+                <!-- Start Navigation Main -->
+                <div class="nav__85percent position-static">
+                    <div class="nav__menu ">
+
+                        <!-- Start  Hamburger -->
+                        <ul class="nav__btn ">
+
+                            <!-- Start Icon Login -->
+                            <li class="nav__item nav--drop nav--menu-drop nav__btn-item ">
+                                
+                                <a href="#" class="nav__btn-link nav__login-icon position-relative" data-check-open="closeMxm ">
+                                    <i class="material-icons material-icons-outlined nav__btn-icon ">person</i>
+                                    <ul class="nav__list--lv2 nav--effect" style="left: -100px;">
+                                        <li class="nav__item--lv2">
+                                        <a href="#" class="nav__link--lv2">PROFILE</a>
+                                        </li>
+
+                                        <li class="nav__item--lv2">
+                                        <a href="#" class="nav__link--lv2">SETTINGS</a>
+                                        </li>
+
+                                        <li class="nav__item--lv2">
+                                        <a href="#" class="nav__link--lv2">SUBSCRIPTION</a>
+                                        </li>
+
+                                        <li class="nav__item--lv2">
+                                        <a href="/logout" class="nav__link--lv2">LOGOUT</a>
+                                        </li>
+                                    </ul>
+                                    <span class="nav__cart-number heading-7th--light" style="font-size: 7px;
+                                    min-height: 0.1rem; min-width: 0.1rem; padding: 2px; top: 50%; right: 0;">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+                                </a>
+                                
+                            </li>
+                            <!-- End login Search -->
+
+                            <!-- Start Icon Hamburger -->
+                            <li class="nav__btn-item">
+                                <a href="# " class="nav__btn-link nav__mobile-icon " data-check-open="closeMxm">
+                                    <i class="nav__mobile-icon--line "></i>
+                                </a>
+                            </li>
+                            <!-- End Icon Hamburger -->
+                        </ul>
+                        <!-- End Mini Cart Search Hamburger -->
+
+                    </div>
+
+                </div>
+                <!-- End Navigation Main -->
+            </div>
+        </div>
+    </div>
+    <!-- End Nav -->
+    <div class="nav--false "></div>
+</div>
+<!-- end navbar -->
+
+<!-- other bars -->
+<!-- Start Menu Mobile Popup -->
+<div class="menu-mobile-popup">
+
+    <div class="menu-mb">
+
+        <!-- Start Menu Popup Header -->
+        <div class="menu-mb__header">
+
+            <div class="menu-mb__logo-box">
+                <a href="index.html" class="menu-mb__logo-link">
+                    <img src="/static/main/assets/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="menu-mb__close-box">
+                <a href="#" class="menu-mb__close-link" data-check-open="closeMxm">
+                </a>
+            </div>
+
+        </div>
+        <!-- End Menu Popup Header -->
+
+        <!-- Start Menu Popup Content -->
+        <div class="menu-mb__content">
+
+            <ul class="menu-mb__list">
+                
+                <li class="menu-mb__item">
+                    <a href="/" class="menu-mb__link"><span>Home</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="/members-area/" class="menu-mb__link"><span>Members Area</span></a>
+                </li>
+
+                <li class="menu-mb__item--lv2 menu-mb--drop">
+                    <a href="#" class="menu-mb__link">Get Started</a>
+                    <ul class="menu-mb__list--lv3">
+    
+                      <li class="menu-mb__item--lv3">
+                        <a href="/day/~1" class="menu-mb__link--lv3">Day 1 - Aspirations</a>
+                      </li>
+    
+                      <li class="menu-mb__item--lv3">
+                        <a href="/day/~2" class="menu-mb__link--lv3">Day 2 - Values</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 3 - Start Your Day</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 4 - Behaviour Mapping</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 5 - Habit Design</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 6 - Habit Review</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 7 - Habit Tracking</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 8 - Scaling Habits</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 9 - Adding Habits</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 10 - Removing Habits</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 11 - Negative Habits</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 12 - Limiting Beliefs</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 13 - Troubleshooting Habits</a>
+                      </li>
+                      
+                      <li class="menu-mb__item--lv3">
+                        <a href="#" class="menu-mb__link--lv3">Day 14 - Review</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                <li class="menu-mb__item">
+                    <a href="/mind-workshop/" class="menu-mb__link"><span>Mind Workshop</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="/take-control-over-your-habits/" class="menu-mb__link"><span>Take Control Over Your Habits</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="#" class="menu-mb__link"><span>5-Day Program</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="#faq" class="menu-mb__link"><span>FAQ</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="#get_in_touch" class="menu-mb__link" data-check-open="closeMxm"><span>Get In Touch</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="/logout" class="menu-mb__link"><span>Logout</span></a>
+                </li>
+                
+            </ul>
+
+
+        </div>
+        <!-- End Menu Popup Content -->
+    </div>
+
+</div>
+<!-- End Menu Mobile Popup -->
+<!-- end other bars -->
+
+<div class="col-12 col-md-10 alert-wrapper">
+    
+    <div class="position-relative">
+
+        
+
+    </div>
+
+</div>
+
+<div id="content">
+    
+
+<!-- loading static -->
+
+<div class="container col-md-8 py-5 py-md-4">
+    <!-- your values -->
+    <section>
+        <h2 class="heading-5th--dark-hi wow move-up animate">
+            Day 1 - Aspirations
+        </h2>
+        <div class="video_cover mt-1">
+            <video poster="/static/main/assets/landing_image.jpg" controls
+                   preload="metadata">
+                <source autostart="false" src="/static/media/admin/days/videos/Its_gay_to_smoke_official_ad360p.mp4" type="video/mp4"/>
+                <img src="/static/main/assets/landing_image.jpg" alt="Video player">
+            </video>
+        </div>
+        <br>
+        <br>
+        <h2 class="heading-5th--dark-hi wow move-up animate">
+            Description
+        </h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus aspernatur voluptatibus incidunt,             distinctio veniam deserunt. Explicabo ex accusantium deleniti consectetur temporibus cum, facilis excepturi             sunt incidunt corporis, saepe amet consequatur?
+        </p>
+        <br>
+        <br>
+        <h2 class="heading-5th--dark-hi wow move-up animate">
+            What You'll learn
+        </h2>
+        <div class="float_image_text d-flex justify-content-between align-items-start col-md-10 p-0 my-2">
+            <img src="/static/media/admin/days/codm_2020-07-03_074811.png" alt="image">
+            <p class="ml-3">
+                You&#x27;ll learn how to do stuff
+            </p>
+        </div>
+        <div class="float_image_text d-flex justify-content-between align-items-start col-md-10 p-0 my-2">
+            <img src="/static/media/" alt="image">
+            <p class="ml-3">
+                None
+            </p>
+        </div>
+        <div class="float_image_text d-flex justify-content-between align-items-start col-md-10 p-0 my-2">
+            <img src="/static/media/" alt="image">
+            <p class="ml-3">
+                None
+            </p>
+        </div>
+        <br>
+        <a href="#" class="btn btn--primary" onclick="openFolder(event)">Resources</a>
+        <div class="my-2 d-none" id="folder">
+            
+            <p class="paragraph-1th--dark-md-hyphens">
+                <a href="#" download="/static/media/admin/days/folder/Full_Stack_Python_Developer_Resume_2.pdf" onclick="preventDefault()">My resume</a>
+            </p>
+            
+        </div>
+    </section>
+</div>
+
+
+</div>
+
+<!-- Start Footer -->
+<div class="footer" id="get_in_touch">
+
+    <!-- Start Info F -->
+    <div class="info-f">
+        <div class="container">
+            <div class="row">
+
+                <!-- Start List F -->
+                <div class="col-sm-6 col-lg-3 order-2 order-lg-4">
+                    <div class="info-f__side2">
+                        <!-- Start Title -->
+                        <h3 class="info-f__title heading-6th--light">
+                            Get in Touch
+                        </h3>
+                        <!-- End Title -->
+
+                        <!-- Start Info List -->
+                        <div class="info-f__list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="material-icons info-f__icon">home</i>568 East Grapes Lane, Las Vegas,
+                                        Alaska
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="material-icons info-f__icon">phone</i>(001) 987 654 321
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="material-icons info-f__icon">email</i>hello@mindfirst.com
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- End Info List -->
+
+
+                    </div>
+                </div>
+                <!-- End List F -->
+
+            </div>
+        </div>
+    </div>
+    <!-- Start Info F -->
+
+    <!-- Start Info Box 2 -->
+    <div class="info-box-2">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- Start Info Copyright -->
+                <div class="col-12">
+                    <div class="info-box-2__contact">
+                        <a class="info-box-2__contact--link text-center">&copy; 2021 Mind First Group
+                            Limited</a>
+                    </div>
+                </div>
+                <!-- End Info Copyright -->
+            </div>
+        </div>
+    </div>
+    <!-- End Info Box 2 -->
+
+</div>
+<!-- End Footer -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+<script src="/static/main/js/constant/imagesloaded.pkgd.min.js "></script>
+<script src="/static/main/js/constant/jquery.waypoints.js "></script>
+<script src="/static/main/js/constant/jquery.counterup2.min.js "></script>
+<script src="/static/main/js/constant/wow.js "></script>
+<script src="/static/main/js/constant/swiper.js "></script>
+<script src="/static/main/js/constant/masonry_count.js "></script>
+<script src="/static/main/js/constant/jquery.wavify.js "></script>
+
+<script src="/static/main/js/constant/extend3.js "></script>
+<script src="/static/main/js/constant/wow_edit.js "></script>
+<script src="/static/main/js/constant/particles.js "></script>
+<script src="/static/main/js/constant/particles_2.js "></script>
+<script src="/static/main/js/constant/particles_edit.js "></script>
+
+
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    function openFolder(e) {
+        e.preventDefault()
+        $("#folder").toggleClass('d-none')
+    }
+</script>
+
+</body>
+</html>

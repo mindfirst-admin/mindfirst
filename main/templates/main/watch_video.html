@@ -1,0 +1,81 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Mind First - Watch Video{% endblock %}
+
+{% block links %}
+<style>
+.video_cover video {
+    max-height: 50vh;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- loading static -->
+{% load static %}
+<div class="container video_cover">
+    <br><br>
+
+    <video controls muted id="intro" class="w-100 h-100" preload="metadata">
+        <source autostart="false" src="{% static 'media/admin/intro.mp4' %}" type="video/mp4"/>
+        <img src="{% static 'main/assets/landing_image.jpg' %}" alt="Video player">
+    </video>
+
+    <video muted class="w-100 h-100 d-none" id="slides" poster="{% static 'assets/landing_image.jpg' %}" controls preload="true">
+        <source src="{% static '' %}media/{{ video_file.file }}" type="video/webm">
+
+        <img src="{% static 'main/assets/landing_image.jpg' %}" alt="Video player">
+    </video>
+
+    <a href="{% url 'main:members_area' %}" id="create-vision" class="mt-5 create btn text-light">Home</a>
+
+    <br><br>
+</div>
+
+<audio preload="metadata" controls id="audio" loop hidden>
+    <source src="{% static 'media/admin/audio.mp3' %}" type="audio/mp3">
+</audio>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    var vid1 = document.getElementById("intro");
+	var vid2 = document.getElementById("slides");
+	var audio = document.getElementById("audio");
+	audio.load()
+
+	vid1.onpause = function() {
+	    audio.pause()
+	};
+	vid1.onplay = function() {
+	    audio.play()
+	};
+
+	vid2.onpause = function() {
+	    audio.pause()
+	};
+	vid2.onplay = function() {
+	    audio.play()
+	};
+
+	vid1.onended = function() {
+		vid2.classList.remove("d-none");
+	    vid2.play()
+		vid1.classList.add("d-none");
+    };
+
+	vid2.onended = function() {
+		vid1.classList.remove("d-none");
+		vid2.classList.add("d-none");
+		audio.pause()
+        vid1.currentTime = 0;
+        vid2.currentTime = 0;
+        audio.currentTime = 0;
+		window.location.href = "{% url 'main:members_area' %}";
+    };
+</script>
+
+{% endblock %}
