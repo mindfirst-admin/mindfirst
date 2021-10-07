@@ -16,10 +16,7 @@ from pathlib import Path
 
 # Create your views here.
 def home(response):
-    if response.user.is_authenticated:
-        return render(response, 'main/home.html', {})
-    else:
-        return redirect('main:login')
+    return render(response, 'main/home.html', {})
 
 
 def members_area(response):
@@ -493,8 +490,8 @@ def products(response):
     return render(response, 'main/products.html', {})
 
 
-def blog(response):
-    return render(response, 'main/blog.html', {})
+def book(response):
+    return render(response, 'main/book.html', {})
 
 
 def login(response):

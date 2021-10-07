@@ -73,18 +73,6 @@
         min-height: 50vh
     }
 
-    .modal_video .container {
-        width: 50vw;
-        height: fit-content;
-        margin: auto;
-        display: table;
-    }
-
-    ul.list,
-    ul.list li {
-        list-style-type: disc !important;
-    }
-
     @media (max-width: 576px) {
         .swiper-slide h2 {
             font-size: 30px;
@@ -93,20 +81,6 @@
         video {
             min-height: auto;
         }
-
-        .modal_video {
-            padding: 70px 0;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
-        .modal_video i {
-            top: 5%;
-        }
-
-        .modal_video .container {
-            width: 90vw;
-        }
     }
 </style>
 {% endblock %}
@@ -114,13 +88,27 @@
 {% block content %}
 
 <section id="main_sect" class="my-5 container-fluid">
-    <h1 class="heading-2th--dark wow move-up animate text-center">
-        Unlock Your Brain For Success
-    </h1>
-    <h3 class="heading-6th--dark wow move-up animate text-center">
-        Achieve Your Goals... Faster and Easier Than Ever Before
-    </h3>
-    <div class="d-flex justify-content-between flex-wrap my-md-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="ut--c mb-3 mb-sm-0">
+                <h2 class="heading-4th--dark-hi wow move-up animate"
+                    style="visibility: visible; animation-name: moveVertical;">Unlock Your Brain For Success</h2>
+            </div>
+        </div>
+        <br><br>
+        <br>
+        <div class="col-12">
+            <div class="ut--c mb-1 mb-sm-4">
+                <h3 class="heading-4th--dark-hi wow move-up  animate"
+                    style="visibility: visible; animation-name: moveVertical;">
+
+                    Achieve Your Goals... Faster and Easier Than Ever Before
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between flex-wrap my-3 mb-md-5">
         <div class="col-lg-7">
             <video style="width: 100%;" poster="{% static 'main/assets/landing_image.jpg' %}" controls>
                 <source src="{% static 'media/admin/intro.mp4' %}" type="video/mp4">
@@ -137,7 +125,8 @@
             <p class="heading-7th--dark wow move-up animate text-dark text-center">
                 Register for Your <span class="font-weight-bold text-purple">FREE</span> spot at Our Event
             </p>
-            <h3 class="heading-6th--dark wow move-up animate text-center">Saturday, October 23rd, at 9:00am PT</h3>
+            <h3 class="heading-6th--dark wow move-up animate text-center text-purple">Saturday, October 23rd, at 9:00am
+                PT</h3>
 
             <form action="" class="mt-2">
                 <div class="sign__group mb-3 wow move-up animate">
@@ -170,41 +159,26 @@
         <div class="swiper-container wow move-up animate text-center py-md-5">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <h2 class="text--primary heading-3th--dark font-weight-bold">
+                    <h2 class="text-purple heading-3th--dark font-weight-bold">
                         Conquer Your
                         Fear Of
                         Failure
                     </h2>
                 </div>
                 <div class="swiper-slide">
-                    <h2 class="text--primary heading-3th--dark font-weight-bold">
+                    <h2 class="text-purple heading-3th--dark font-weight-bold">
                         Start Earning
                         What You
                         Deserve</h2>
                 </div>
                 <div class="swiper-slide">
-                    <h2 class="text--primary heading-3th--dark font-weight-bold">
+                    <h2 class="text-purple heading-3th--dark font-weight-bold">
                         Reach Your
                         Mental and
                         Emotional Fitness Goals</h2>
                 </div>
             </div>
         </div>
-
-        <h2 class="heading-5th--dark wow move-up animate text-center">By Innercising</h2>
-        <br>
-
-        <a href="#" onclick="openModal()" class="btn btn--primary col-12 col-md-7 col-lg-6 m-auto d-table">
-            <p class="heading-6th--dark text-light p-2">Click Here To Start Innercising
-                Today!</p>
-        </a>
-
-        <br>
-        <p class="heading-6th--dark wow move-up animate text-dark text-center font-weight-light">
-            <span class="font-weight-bold text-purple">What is Innercise™?</span> Innercise™ is a
-            scientifically proven
-            methodology to train & strengthen your mental & emotional skills.
-        </p>
 
         <div id="particles-js--v1" class="particles--v1">
             <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1349"
@@ -215,103 +189,109 @@
 
     <div class="banner wow move-up animate bg-purple">
         <span></span>
-        <h1 class="heading-3th--dark text-center text-light w-100">Mind First<sub style="font-size: 12px;">TM</sub></h1>
+        <h1 class="heading-2th--dark text-center text-light w-100">Mind First<sub style="font-size: 12px;">TM</sub></h1>
         <p class="heading-5th--dark text-center text-light w-100 font-weight-light">Empower The World. One Mind at a
             Time™</p>
     </div>
 </section>
-
-<br>
-<section id="innercising">
-    <div class="container-fluid d-flex flex-wrap justify-content-between">
-        <div class="col-lg-6">
-            <h3 class="heading-4th--dark wow move-up animate">Learn More About Innercising</h3>
-            <br>
-            <p class="heading-7th--dark wow move-up animate font-weight-light">Each week we aggregate and publish the
-                latest scientific
-                findings, mindset tips, and news so you can learn more about how you can continue to master your mindset
-                to be the best version of you.</p>
-            <br>
-            <a href="#" class="btn btn--primary col-11 col-md-8">
-                <p class="heading-7th--dark text-light p-2 wow move-up animate">CLICK HERE TO VIEW THE BLOG</p>
-            </a>
-
-            <br>
-            <br>
-            <div class="d-flex align-items-center flex-column">
-                <p class="heading-7th--dark wow move-up animate font-weight-light text-center">Join In The Innercise®
-                    Revolution</p>
-                <h4 class="heading-3th--dark number__percent wow move-up animate text-center">763,421</h4>
-                <p class="heading-7th--dark wow move-up animate font-weight-light text-center">Followers and Growing!
-                </p>
-            </div>
-        </div>
-        <div class="col-lg-6" style="min-height: 50vh;">
-            <img alt="image" src="{% static 'main/assets/landing_image.jpg' %}" style="object-fit: cover"
-                class="h-100 w-100">
-        </div>
-    </div>
-</section>
 <br>
 
-<div class="modal_video">
-    <div class="position-relative container" style="background-color: white; color: black;">
-        <div class="d-flex align-items-center flex-column">
-            <div class="col-md-9 m-auto">
-                <br>
-                <p class="heading-6th--dark font-weight-light text-center">A Better You. A Better
-                    World
-                </p>
-                <h3 class="heading-5th--dark text-purple font-weight-bold text-center">
-                    Sign up for the NeuroGym newsletter and you'll receive:
-                </h3>
-                <br>
+<!-- begin about -->
+<div id="About" class="section-some-service-v2" style="padding: 0;">
+    <div class="container">
 
-                <ul class="list">
-                    <li class="heading-6th--dark font-weight-light">Scientifically proven
-                        ways you can achieve your biggest goals and dreams
-                    </li>
-                    <li class="heading-6th--dark font-weight-light">Invitations to free virtual
-                        trainings with world famous mindset and success experts
-                    </li>
-                    <li class="heading-6th--dark font-weight-light">Tips and tools to help you get
-                        rid
-                        of your self-doubts, fears and the daily stuff that stresses you out
-                    </li>
-                </ul>
+        <!-- Start Title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="ut--c">
+                    <h2 class="heading-4th--dark-hi wow move-up animate"
+                        style="visibility: visible; animation-name: moveVertical;">Do What Works</h2>
+                </div>
+            </div>
+            <br><br>
+            <br>
+            <div class="col-12">
+                <div class="ut--c umb--56">
+                    <h3 class="heading-4th--dark-hi wow move-up  animate"
+                        style="visibility: visible; animation-name: moveVertical;">
 
-                <br>
-                <form action="" class="mt-2">
-                    <div class="sign__group mb-3">
-                        <input name="name" id="name" type="text" class="sign__input heading-7th--dark-md"
-                            placeholder="Enter your first name" required>
-                        <!-- <label for="email" class="sign__label heading-9th--dark-md">Email*</label> -->
-                    </div>
-                    <div class="sign__group mb-3">
-                        <input name="email" id="email" type="text" class="sign__input heading-7th--dark-md"
-                            placeholder="Enter your email" required>
-                        <!-- <label for="email" class="sign__label heading-9th--dark-md">Email*</label> -->
-                    </div>
-                    <button type="submit" class="sign__btn btn btn--primary col-md-6">Sign Up Now!
-
-                    </button>
-                </form>
+                        Mind First - Help To Get The Life You Want
+                    </h3>
+                </div>
             </div>
         </div>
-        <br>
-        <br>
+        <!-- End Title -->
+
+        <!-- Start List Service -->
+        <div class="row">
+
+            <!-- Start Service -->
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="service-v1 wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <h4 class="service-v1__name heading-6th--dark-hi">
+                        How We <span class="font-weight-light text-dark">Think</span>
+                    </h4>
+                    <div class="service-v1__line"></div>
+
+                    <p class="service-v1__paragraph paragraph-2th--dark-md">
+                        To create the life you want you have to think differently. Mind First will show you how to
+                        do just that, Using the latest breakthroughs in neuroscience we have developed a series of
+                        exercises so you can train your brain for change
+                    </p>
+
+                </div>
+            </div>
+            <!-- End Service -->
+
+            <!-- Start Service -->
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="service-v1 wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <h4 class="service-v1__name heading-6th--dark-hi">
+                        How We <span class="font-weight-light text-dark">Act</span>
+                    </h4>
+                    <div class="service-v1__line"></div>
+
+                    <p class="service-v1__paragraph paragraph-2th--dark-md">
+                        We are our behaviours, we are consistent with who we are. To achieve what we want, we have
+                        to act differently. Mind First provides you with the tools and support to do just that a
+                        tried and tested method that works
+                    </p>
+
+                </div>
+            </div>
+            <!-- End Service -->
+
+            <!-- Start Service -->
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="service-v1 wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <h4 class="service-v1__name heading-6th--dark-hi">
+                        How We <span class="font-weight-light text-dark">Live</span>
+                    </h4>
+                    <div class="service-v1__line"></div>
+
+                    <p class="service-v1__paragraph paragraph-2th--dark-md">
+                        One of the biggest challenges we face when trying to change is the environment we live in,
+                        the physical environment, where we live and work, the people we interact with and our mental
+                        environment. Mind First helps you design an environment for success
+                    </p>
+
+                </div>
+            </div>
+            <!-- End Service -->
+        </div>
+        <!-- End List Service -->
     </div>
-    <i onclick="close_()" class="position-absolute material-icons">close</i>
 </div>
+<!-- end about -->
+<br>
 {% endblock %}
 
 {% block scripts %}
 <script src="{% static 'main/js/particle_copy.js' %} "></script>
 <script>
-    function openModal() {
-        $('.modal_video').toggleClass('active')
-        preventDefault()
-    }
     const swiper = new Swiper('.swiper-container', {
         // Optional parameters
         direction: 'horizontal',
@@ -327,9 +307,5 @@
             crossFade: true
         },
     })
-
-    function close_() {
-        $('.modal_video').toggleClass('active')
-    }
 </script>
 {% endblock %}

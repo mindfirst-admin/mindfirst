@@ -30,7 +30,7 @@ urlpatterns = [
     path("mind-workshop/week~<int:week>", views.mind_workshop, name="mind_workshop"),
 
     path("products/", views.products, name="products"),
-    path("blog/", views.blog, name="blog"),
+    path("book/", views.book, name="book"),
 
     path("login/", views.login, name="login"),
     path("sign-up/", views.sign_up, name="sign_up"),
