@@ -1,0 +1,54 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Mind First - Product Details{% endblock %}
+
+{% block links %}
+{% endblock %}
+
+{% block content %}
+
+<!-- loading static -->
+{% load static %}
+
+<section id="main_sect" class="my-5 container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="ut--c mb-3 mb-sm-0">
+                <h2 class="heading-4th--dark-hi wow move-up animate"
+                    style="visibility: visible; animation-name: moveVertical;">{{ main_header }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap container-fluid">
+            <div class="col-lg-6 p-0">
+                <img src="{% static 'main/assets/landing_image.jpg' %}" alt="image"
+                    style="min-height: 90%; object-fit: cover; width: 100%;">
+                <br>
+                <br>
+                <a href="{{ link }}" class="btn btn--primary" style="font-size: 16px">Buy Now</a>
+            </div>
+
+            <div class="col-lg-6">
+                <h2 class="heading-5th--dark text-center text-md-left w-100">{{ sub_header }}</h2>
+                <br>
+                <p class="heading-6th--dark font-weight-light">
+                    {{ text }}
+                    <br>
+                    <br>
+                    {{ text }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

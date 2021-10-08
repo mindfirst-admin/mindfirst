@@ -484,7 +484,7 @@ def five_day(response, day):
             return render(response, 'main/404.html', {})
     else:
         return redirect('main:login')
-    
+
 
 def products(response):
     return render(response, 'main/products.html', {})
@@ -492,6 +492,60 @@ def products(response):
 
 def book(response):
     return render(response, 'main/book.html', {})
+
+
+def details(response, product):
+    main_header = ''
+    sub_header = ''
+    text = ''
+    link = '#'
+
+    if product == '5-day-challenge':
+        main_header = '5-Day Challenge'
+        sub_header = 'Repeatable, Practical, Proven, Peer-Reviewed Science'
+        text = 'From cradle to the grave, your brain will process more events than there are stars in our universe. ' \
+               'As your body’s “central processing unit,” your brain is in charge of a staggering array of functions,' \
+               ' from processing and perceiving stimuli to motor control and memory storage. Habits and beliefs progr' \
+               'ammed into your mind over a lifetime of responding to experiences are stored in long-term memory, ' \
+               'and may cause you to resist new ways of doing things.'
+        link = '#'
+
+    elif product == 'book':
+        main_header = 'Progress Equals Happiness'
+        sub_header = 'Repeatable, Practical, Proven, Peer-Reviewed Science'
+        text = 'From cradle to the grave, your brain will process more events than there are stars in our universe. ' \
+               'As your body’s “central processing unit,” your brain is in charge of a staggering array of functions,' \
+               ' from processing and perceiving stimuli to motor control and memory storage. Habits and beliefs progr' \
+               'ammed into your mind over a lifetime of responding to experiences are stored in long-term memory, ' \
+               'and may cause you to resist new ways of doing things.'
+        link = '#'
+
+    elif product == 'workbook':
+        main_header = 'Our Workbook'
+        sub_header = 'Repeatable, Practical, Proven, Peer-Reviewed Science'
+        text = 'From cradle to the grave, your brain will process more events than there are stars in our universe. ' \
+               'As your body’s “central processing unit,” your brain is in charge of a staggering array of functions,' \
+               ' from processing and perceiving stimuli to motor control and memory storage. Habits and beliefs progr' \
+               'ammed into your mind over a lifetime of responding to experiences are stored in long-term memory, ' \
+               'and may cause you to resist new ways of doing things.'
+        link = '#'
+
+    elif product == 'membership':
+        main_header = 'Mind First Membership'
+        sub_header = 'Repeatable, Practical, Proven, Peer-Reviewed Science'
+        text = 'From cradle to the grave, your brain will process more events than there are stars in our universe. ' \
+               'As your body’s “central processing unit,” your brain is in charge of a staggering array of functions,' \
+               ' from processing and perceiving stimuli to motor control and memory storage. Habits and beliefs progr' \
+               'ammed into your mind over a lifetime of responding to experiences are stored in long-term memory, ' \
+               'and may cause you to resist new ways of doing things.'
+        link = '#'
+
+    return render(response, 'main/details.html', {
+        'main_header': main_header,
+        'sub_header': sub_header,
+        'text': text,
+        'link': link
+    })
 
 
 def login(response):

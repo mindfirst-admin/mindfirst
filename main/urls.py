@@ -32,6 +32,8 @@ urlpatterns = [
     path("products/", views.products, name="products"),
     path("book/", views.book, name="book"),
 
+    path("details/<str:product>", views.details, name="details"),
+
     path("login/", views.login, name="login"),
     path("sign-up/", views.sign_up, name="sign_up"),
 
