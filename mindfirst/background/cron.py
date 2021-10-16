@@ -163,7 +163,7 @@ def analyze_daily_habit_n_reset_thumb_click():
         user.profile.save()
 
 
-@scheduled.scheduled_job('cron', day_of_week='sun-sat', hour=23, minute=59)
+@scheduled.scheduled_job('cron', day_of_week='mon-sat', hour=23, minute=59)
 def daily():
     update_daily_behavior_record()
     update_daily_chart_using_thumb_clicks()
