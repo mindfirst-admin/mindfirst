@@ -1,0 +1,85 @@
+{% extends "main/base_template.html" %}
+
+{% block title %}Vision Gallery{% endblock %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/vision_css.css' %}">
+{% endblock %}
+
+{% block body %}
+<!-- the big why -->
+<div class="container">
+    <section id="why">
+        <div class="text-left mt-3">
+            <h3 class="heading-5th--dark-hi wow move-up"
+                style=" letter-spacing: 0.25rem; visibility: visible; animation-name: moveVertical;">
+                Aspirations:
+            </h3>
+        </div>
+    
+        <div class='visions col-12 row'>
+            <div class="vision-images-container d-flex flex-wrap">
+                
+                {% for image in aspiration_images %}
+                <div class="vision-images position-relative m-2 wow move-up animate" style="cursor: pointer;">
+                    <img src="{% static '' %}media/{{ image.file }}" class="h-100 w-100 hover_show">
+                </div>
+                {% endfor %}
+    
+            </div>
+        </div>
+    
+        <a href="{% url 'gallery:edit_aspirations' %}" class="btn btn--primary mt-3 wow move-up animate">
+            <p class="paragraph-2th--light p-2">
+                Edit your aspirations
+            </p>
+        </a>
+    
+    </section>
+    <br>
+    
+    <!-- your values -->
+    <section id="values">
+        <div class="text-left mt-3">
+            <h3 class="heading-5th--dark-hi wow move-up"
+                style=" letter-spacing: 0.25rem; visibility: visible; animation-name: moveVertical;">
+                Your values:
+            </h3>
+        </div>
+    
+        <div class='visions col-12 d-flex row'>
+    
+            <div class="vision-images-container d-flex flex-wrap">
+                {% for image in values_images %}
+                <div class="vision-images position-relative m-2 wow move-up animate" style="cursor: pointer;">
+                    <img src="{% static '' %}media/{{ image.file }}" class=" h-100 w-100 hover_show">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <a href="{% url 'gallery:edit_values' %}" class="btn btn--primary mt-3 wow move-up animate">
+            <p class="paragraph-2th--light p-2">
+                Edit your values
+            </p>
+        </a>
+    </section>
+    
+    
+    <a id="create-vision" class="btn btn-outline-secondary my-5 wow move-up animate"
+       href="{% url 'gallery:processing_video' %}">Create your Video</a>
+</div>
+
+<div class="modal_video" id="hover-show-div">
+    <div class="container d-flex m-auto">
+        <img src='' class="m-auto d-block">
+    </div>
+    <i onclick="close_hover_show()" class="position-absolute material-icons">close</i>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'main/js/visions.js' %}"></script>
+{% endblock %}

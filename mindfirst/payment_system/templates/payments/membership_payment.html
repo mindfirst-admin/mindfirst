@@ -1,0 +1,146 @@
+{% extends "main/base_template.html" %}
+
+{% block title %}Make Payment{% endblock %}
+
+{% block body %}
+<!-- Start Section Content Main -->
+<div class="section-content-main">
+    <div class="container">
+        <h1>Pay Now</h1>
+        <br>
+        <br>
+        <div class="row">
+            <!-- Start Content -->
+            <div class="col-lg-12">
+
+                <!-- Start List Product -->
+                <div class="row">
+                    <!-- Start Product -->
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 umb--40">
+                        <div class="item-product wow move-up animate">
+
+                            <div class="item-product__side">
+                                <h2>Monthly Plan</h2>
+                                <br>
+                                <a class="item-product__link">
+                                    {% load static %}
+                                    <img class="item-product__picture"
+                                         src="{% static 'main/assets/package_image.jpg' %}" alt="product">
+                                </a>
+                                <h3 class="item-product__name">
+                                    <a class="heading-6th--dark-hi-hover">
+                                        Breaking Free Membership
+                                    </a>
+                                </h3>
+                                <h5>
+                                    Your Membership provides you with the help, resources and support to achieve what
+                                    you want from your life.
+                                </h5>
+                                <div class="item-product__price">
+                                    <p class="item-product__price--sale heading-7th--primary-hi">£99</p>
+                                    </h5>
+                                </div>
+
+                                <button onclick="openModal()" class="btn btn--secondary"><span class="text-up">Pay
+                                        Now</span></button>
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Product -->
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 umb--40">
+                        <div class="item-product wow move-up animate">
+
+                            <form action="{% url 'payments:membership_annually' %}" method="post" class="item-product__side">
+                                {% csrf_token %}
+                                <h2>Annual Plan</h2>
+                                <br>
+                                <a class="item-product__link">
+                                    {% load static %}
+                                    <img class="item-product__picture"
+                                         src="{% static 'main/assets/package_image.jpg' %}" alt="product">
+                                </a>
+                                <h3 class="item-product__name">
+                                    <a class="heading-6th--dark-hi-hover">
+                                        Breaking Free Membership
+                                    </a>
+                                </h3>
+                                <h5>
+                                    Your Membership provides you with the help, resources and support to achieve what
+                                    you want from your life.
+                                </h5>
+                                <div class="item-product__price">
+                                    <p class="item-product__price--sale heading-7th--primary-hi">£251.75 (Save 30%)</p>
+                                    <p style="font-size: 16px"
+                                       class="item-product__price--origin heading-8th--dark-di-line-through">£359.64
+                                    </p>
+                                    </h5>
+
+                                </div>
+
+                                <!-- stripe link -->
+                                <button type="submit" class="btn btn--secondary"><span class="text-up">Pay
+                                            Now</span></button>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- End List Product -->
+            </div>
+            <!-- End Content -->
+        </div>
+    </div>
+</div>
+<!-- End Section Content Main -->
+
+<!-- for monthly -->
+<div id="monthly_certify" class="modal_confirm col-12 col-md-7">
+    <div class="container py-3">
+
+        <form action="{% url 'payments:membership_monthly' %}" method="POST">
+            {% csrf_token %}
+            <div class="input_boxes d-flex justify-content-between w-100">
+                <input class=" mt-2" type="checkbox" value="" required>
+                <span class="m-2"></span>
+                <p for="" class="mb-auto p-0">
+                    <b>IMPORTANT</b>: I understand that my first month's membership is part of a promotion and agree
+                    that after this first month, I will be billed at the normal breakthrough membership program rate, as
+                    shown above.
+
+                    I understand I can cancel at any time up to 48 hours before any monthly renewal by sending an email
+                    to
+                    cancel@mindfirst.me and will not be billed for the following month's membership to the payment card
+                    I provided today. Additionally, I understand that there are no long-term contracts after my trial
+                    month
+                    ends, continuing is optional, and I can cancel at any time!
+                </p>
+            </div>
+            <br>
+            <div class="d-flex">
+                <button type="submit" class="btn btn--primary"><span class="text-up">Pay Now</span></button>
+                <span class="m-3"></span>
+                <p onclick="closeModal()" class="btn btn-outline-dark"><span class="text-up">Cancel</span></p>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function openModal() {
+        var elem = document.querySelector('#monthly_certify')
+        elem.classList.toggle('active')
+    }
+
+    function closeModal() {
+        var elem = document.querySelector('#monthly_certify')
+        elem.classList.toggle('active')
+
+    }
+
+</script>
+{% endblock %}

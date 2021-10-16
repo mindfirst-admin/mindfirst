@@ -1,0 +1,1125 @@
+{% extends "main/base_template.html" %}
+
+{% block title %}Members Area{% endblock %}
+
+{% block links %}
+<style>
+    .chart-cover {
+        width: 100%;
+        height: 60vh;
+        margin-top: 50px;
+    }
+
+    @media (max-width: 567px) {
+        .w-sm-100 {
+            width: 100%;
+        }
+    }
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+<!-- loading static -->
+{% load static %}
+<!-- Start Section Carousel -->
+<div id="Home" class="section-carousel-v4" style="height: 90vh;">
+
+    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+
+        <!-- Start Slider Show Img -->
+        <div class="swiper-slide swiper-slide-active">
+
+            <div class="slider-swiper-v1__wrap">
+                <div class="slider-swiper-v1__box">
+
+                    <div class="text-box5">
+                        <h1 class="text-box5__title heading-2th--light">
+                            It's Your Time Now
+                        </h1>
+                        <h3 class="text-box5__sub-title heading-10th--light-hi">
+                            It is a beautiful experience when you realise change is happening
+                        </h3>
+                        <div style="z-index: 100;" class="d-flex flex-column flex-md-row mx-auto">
+                            {% if has_video %}
+                            <a onclick="toggle(this); play()" data-target-video="vision_gallery_video"
+                               class="text-box5__btn btn btn--primary text-light">Start Your Day</a>
+                            {% else %}
+                            <a href="{% url 'gallery:vision_gallery' %}"
+                               class="text-box5__btn btn btn--primary text-light">Get Started Now</a>
+                            {% endif %}
+                            <span class="m-3"></span>
+                            <a href="{% url 'behaviours:habit_reporting' orientation='positive' %}"
+                               class="text-box5__btn btn btn-outline-light">How
+                                was your day</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="parallax-item__mouse">
+                <div class="parallax-item__mouse--title heading-7th--light">
+                    Scroll For More
+                </div>
+                <a href="#goPosition01" class="parallax-item__mouse--icon">
+                    <i class="material-icons material-icons-outlined">mouse</i>
+                </a>
+            </div>
+
+            <div class="parallax-item__watch">
+                <div class="parallax-item__watch--title heading-7th--light">
+                    Start Your Day
+                </div>
+                <a style="cursor:pointer" onclick="toggle(this); play()" data-target-video="vision_gallery_video"
+                   class="parallax-item__watch--icon modal__youtube">
+                    <i class="material-icons material-icons-outlined">add</i>
+                </a>
+            </div>
+
+
+            <div id="particles-js--v1" class="particles--v1">
+                <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1349"
+                        height="703"></canvas>
+            </div>
+
+
+            <img style="object-fit: cover;" class="slider-swiper-v1__img w-100 h-100" alt="banner"
+                 src="{% static 'main/assets/landing_image.jpg' %}">
+
+        </div>
+        <!-- End Slider Show Img -->
+
+    </div>
+
+
+</div>
+<!-- End Section Carousel -->
+
+<!-- section who we are -->
+<div class="section-who-we-are" id="who_we_are">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <video style="width: inherit;" poster="//vjs.zencdn.net/v/oceans.png" controls loop>
+                    <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+                    <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm">
+                    <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+
+                    Your browser does not support the HTML5 Video element.
+                </video>
+            </div>
+            <div class="col-md-6">
+                <h2 class="Dev-heading-main-template wow move-up animate"> Myths & Mis-Information</h2>
+                <br/>
+                <p class="who__paragraph paragraph-6th--dark-md wow move-up animate" style="font-size: 13px;">
+                    Most of us have a strong desire to make positive changes in our lives. Eat healthier, lose weight,
+                    stop smoking, be a better parent,
+                    a better partner, be more productive, start a new business. However, there is often a big gap to
+                    bridge between what we want and what we do.
+                    The attempts to make the changes we want often fail, the results are disappointing. We tell
+                    ourselves that change is too hard;
+                    we lack willpower or motivation. None of this is true; the problem is in the approach.
+                    If you have tried to make changes in your life and they have come up short, please don't assume it's
+                    your fault; it isn't.
+                    Society would have us believe otherwise; of course, sadly, the world we live in is one of blame and
+                    criticism.
+
+                    <br><br>
+
+                    For years, myths, misconceptions, and poor advice with no scientific grounding set us up to
+                    fail—each
+                    failure providing ammunition to our limiting beliefs. Getting past blaming ourselves
+                    , past our limiting beliefs, is essential to our success.
+
+                    <br><br>
+
+                    Mind First provides you with a step-by-step process to get what you want, and it is much easier than
+                    you think.
+                    You will gain confidence as you move towards the change you wish to. Importantly,
+                    you will learn to feel good about yourself as you recognize and celebrate the small wins you make
+                    every day on the path of transformation.
+                    Right now, this may seem a long way off, but this method works; thousands have followed the same
+                    path to success, and you can too.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- section who we are end -->
+
+
+<!-- begin about -->
+<div id="About" class="section-some-service-v2" style="padding: 0;">
+    <div class="container">
+
+        <!-- Start Title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="ut--c">
+                    <h2 class="heading-4th--dark-hi wow move-up animate"
+                        style="visibility: visible; animation-name: moveVertical;">Do What Works</h2>
+                </div>
+            </div>
+            <br><br>
+            <br>
+            <div class="col-12">
+                <div class="ut--c umb--56">
+                    <h3 class="heading-4th--dark-hi wow move-up  animate"
+                        style="visibility: visible; animation-name: moveVertical;">
+
+                        Mind First - Help To Get The Life You Want
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!-- End Title -->
+
+        <!-- Start List Service -->
+        <div class="row">
+
+            <!-- Start Service -->
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="service-v1 wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <h4 class="service-v1__name heading-6th--dark-hi">
+                        How We <span class="font-weight-light text-dark">Think</span>
+                    </h4>
+                    <div class="service-v1__line"></div>
+
+                    <p class="service-v1__paragraph paragraph-2th--dark-md">
+                        To create the life you want you have to think differently. Mind First will show you how to
+                        do just that, Using the latest breakthroughs in neuroscience we have developed a series of
+                        exercises so you can train your brain for change
+                    </p>
+
+                </div>
+            </div>
+            <!-- End Service -->
+
+            <!-- Start Service -->
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="service-v1 wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <h4 class="service-v1__name heading-6th--dark-hi">
+                        How We <span class="font-weight-light text-dark">Act</span>
+                    </h4>
+                    <div class="service-v1__line"></div>
+
+                    <p class="service-v1__paragraph paragraph-2th--dark-md">
+                        We are our behaviours, we are consistent with who we are. To achieve what we want, we have
+                        to act differently. Mind First provides you with the tools and support to do just that a
+                        tried and tested method that works
+                    </p>
+
+                </div>
+            </div>
+            <!-- End Service -->
+
+            <!-- Start Service -->
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="service-v1 wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <h4 class="service-v1__name heading-6th--dark-hi">
+                        How We <span class="font-weight-light text-dark">Live</span>
+                    </h4>
+                    <div class="service-v1__line"></div>
+
+                    <p class="service-v1__paragraph paragraph-2th--dark-md">
+                        One of the biggest challenges we face when trying to change is the environment we live in,
+                        the physical environment, where we live and work, the people we interact with and our mental
+                        environment. Mind First helps you design an environment for success
+                    </p>
+
+                </div>
+            </div>
+            <!-- End Service -->
+        </div>
+        <!-- End List Service -->
+    </div>
+</div>
+<!-- end about -->
+
+<br>
+<br><br><br>
+
+<!-- begin grid -->
+<div class="container">
+    <!-- Start Title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="ut--c umb--12">
+                <h3 class="heading-4th--dark-hi wow move-up animate">
+                    SETUP
+                </h3>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="ut--c">
+                <h3 class="heading-4th--dark-hi wow move-up animate">
+                    It's Your Time Now
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!-- End Title -->
+</div>
+
+<!-- Start Section Portfolio Full -->
+<div id="Work" class="section-portfolio-full">
+    <div id="get_started" class="container-mxm">
+        <div class="portfolio-full">
+
+            <!-- Start Team -->
+            <div class="portfolio-full__wrap-full wow move-up animate">
+
+                <div class="portfolio-full__side">
+                    <a class="portfolio-full__picture">
+                        <img style="object-fit: cover;" src="{% static 'main/assets/portfolio-f-01.jpg' %}"
+                             alt="Portfolio">
+                        <a onclick="toggle(this)" data-target-video="start_day_video" class="item-blog__icon"
+                           style="z-index: 100;cursor:pointer;">
+                            <i class="material-icons material-icons-outlined">play_circle_outline</i>
+                        </a>
+                    </a>
+                </div>
+
+                <div class="portfolio-full__side-info order-sm-first order-md-first order-lg-last">
+
+                    <h5 class="portfolio-full__date-cate">
+                        <a class="heading-9th--dark-hi-hover-uppercase">
+                            Start Your Day Video
+                        </a>
+                    </h5>
+                    <h4 class="portfolio-full__name">
+                        <a class="heading-6th--dark-hi">
+                            Make The Most From
+                        </a>
+                    </h4>
+
+                    <div class="portfolio-full__line"></div>
+
+                    <p class="portfolio-full__paragraph paragraph-2th--dark-md-hyphens">
+                        How you start your day has a major impact on how the day turns out, watch your 'Start Your
+                        Day' video to set you up for a great day
+                    </p>
+
+                    {% if has_video %}
+                    <div class="d-flex">
+                        <a style="cursor:pointer" onclick="toggle(this); play()"
+                           data-target-video="vision_gallery_video"
+                           class="portfolio-full__btn btn btn--secondary">START MY DAY</a>
+                        <span class="mx-3"></span>
+                        <a href="{% url 'gallery:vision_gallery' %}"
+                           class="portfolio-full__btn btn btn--secondary">EDIT</a>
+                    </div>
+                    {% else %}
+                    <a href="{% url 'gallery:vision_gallery' %}" class="portfolio-full__btn btn btn--secondary">GET
+                        STARTED
+                        NOW</a>
+                    {% endif %}
+
+                </div>
+
+            </div>
+            <!-- End Team -->
+
+            <!-- Start Team -->
+            <div class="portfolio-full__wrap wow move-up animate">
+
+                <div class="portfolio-full__side">
+                    <a class="portfolio-full__picture">
+                        <img style="object-fit: cover;" src="{% static 'main/assets/portfolio-q-01.jpg' %}"
+                             alt="Portfolio">
+                        <a onclick="toggle(this)" data-target-video="behavior_video" class="item-blog__icon"
+                           style="z-index: 100;cursor:pointer;">
+                            <i class="material-icons material-icons-outlined">play_circle_outline</i>
+                        </a>
+                    </a>
+                </div>
+
+                <div class="portfolio-full__side-info">
+
+
+                    <h5 class="portfolio-full__date-cate">
+                        <a href="#" class="heading-9th--dark-hi-hover-uppercase">
+                            The Life You Want One Behaviour At A Time
+                        </a>
+                    </h5>
+                    <h3 class="portfolio-full__name">
+                        <a class="heading-5th--dark-hi">
+                            Behavior Mapping
+                        </a>
+                    </h3>
+
+                    <div class="portfolio-full__line"></div>
+
+                    <p class="portfolio-full__paragraph paragraph-2th--dark-md-hyphens">
+                        Watch the video to learn about our behaviour mapping, then when you are ready click the button
+                        below to get started to identify and choose the behaviours that will start
+                        you on your journey to get what you want
+                    </p>
+
+                    <a href="{% url 'behaviours:behaviour_mapping' %}" class="portfolio-full__btn btn btn--secondary">GET
+                        STARTED</a>
+
+
+                </div>
+
+            </div>
+            <!-- End Team -->
+
+            <!-- Start Team -->
+            <div class="portfolio-full__wrap wow move-up animate">
+
+                <div class="portfolio-full__side">
+                    <a class="portfolio-full__picture">
+                        <img style="object-fit: cover;" src="{% static 'main/assets/portfolio-q-02.jpg' %}"
+                             alt="Portfolio">
+                        <a onclick="toggle(this)" data-target-video="habit_designer" class="item-blog__icon"
+                           style="z-index: 100;cursor:pointer;">
+                            <i class="material-icons material-icons-outlined">play_circle_outline</i>
+                        </a>
+                    </a>
+                </div>
+
+                <div class="portfolio-full__side-info order-sm-first order-md-first order-lg-last">
+
+                    <h5 class="portfolio-full__date-cate">
+                        <a class="heading-9th--dark-hi-hover-uppercase">
+                            start being the person you want to be
+                        </a>
+                    </h5>
+                    <h3 class="portfolio-full__name">
+                        <a class="heading-5th--dark-hi-hover">
+                            Habit Designer
+                        </a>
+                    </h3>
+
+                    <div class="portfolio-full__line"></div>
+
+                    <p class="portfolio-full__paragraph paragraph-2th--dark-md-hyphens">
+                        Watch the video to learn about our habit designer, then when you are ready click the button
+                        below to learn about habit design, and easily turn your behaviours into
+                        habits
+                    </p>
+
+                    <a href="#habit_design" class="portfolio-full__btn btn btn--secondary">GET STARTED</a>
+
+                </div>
+            </div>
+            <!-- End Team -->
+
+            <!-- Start Team -->
+            <div class="portfolio-full__wrap wow move-up animate" id="how_was_your_day">
+
+                <div class="portfolio-full__side">
+                    <a class="portfolio-full__picture">
+                        <img style="object-fit: cover;" src="{% static 'main/assets/portfolio-q-03.jpg' %}"
+                             alt="Portfolio">
+                    </a>
+                </div>
+
+                <div class="portfolio-full__side-info order-sm-last order-md-last order-lg-first ">
+
+                    <h5 class="portfolio-full__date-cate">
+                        <a class="heading-9th--dark-hi-hover-uppercase">
+                            keep on track
+                        </a>
+                    </h5>
+                    <h3 class="portfolio-full__name">
+                        <a class="heading-5th--dark-hi-hover">
+                            Habit Review
+                        </a>
+                    </h3>
+
+                    <div class="portfolio-full__line"></div>
+
+                    <p class="portfolio-full__paragraph paragraph-2th--dark-md-hyphens">
+                        How was your day?. Review your progress each day, swipe through the habits
+                        you are building and see them grow. Click the button to get started
+                    </p>
+
+                    <a href="{% url 'behaviours:habit_reporting' orientation='positive' %}"
+                       class="portfolio-full__btn btn btn--secondary">GET
+                        STARTED</a>
+
+                </div>
+            </div>
+            <!-- End Team -->
+
+            <!-- Start Team -->
+            <div class="portfolio-full__wrap wow move-up animate">
+
+                <div class="portfolio-full__side">
+                    <a class="portfolio-full__picture">
+                        <img style="object-fit: cover;" src="{% static 'main/assets/portfolio-q-04.jpg' %}"
+                             alt="Portfolio">
+                    </a>
+                </div>
+
+                <div class="portfolio-full__side-info order-sm-last order-md-last order-lg-first ">
+
+                    <h5 class="portfolio-full__date-cate">
+                        <a class="heading-9th--dark-hi-hover-uppercase">
+                            call out your limiting beliefs
+                        </a>
+                    </h5>
+                    <h3 class="portfolio-full__name">
+                        <a class="heading-5th--dark-hi-hover">
+                            Limiting Beliefs
+                        </a>
+                    </h3>
+
+                    <div class="portfolio-full__line"></div>
+
+                    <p class="portfolio-full__paragraph paragraph-2th--dark-md-hyphens">
+                        Our limiting beliefs hold us back, through the great progress you make you can call them out,
+                        challenge them and ultimately be done with them. Click the button below to get started
+                    </p>
+
+                    <a href="{% url 'main:limiting_beliefs' %}" class="portfolio-full__btn btn btn--secondary">GET
+                        STARTED</a>
+
+                </div>
+            </div>
+            <!-- End Team -->
+        </div>
+    </div>
+</div>
+<!-- End Section Section Portfolio Full -->
+<!-- end grid -->
+
+<br><br><br>
+<br><br>
+
+<!-- start flex stuff -->
+<div class="container" id="habit_design">
+    <div class="ut--c umb--56">
+        <h2 class="heading-4th--dark-hi wow move-up animate">
+            HABIT DESIGN
+        </h2>
+        <h2 class="heading-4th--dark-hi wow move-up animate">
+            Create good habits and take control over your bad habits
+        </h2>
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-md-6">
+            <div class="item-blog wow move-up animate p-0">
+                <img style="height:300px; object-fit: cover; max-height:300px;" src="{% static aspiration_image %}"
+                     alt="aspiration image" class="w-100"/>
+
+                <div class="px-3 pb-2">
+                    <h2 class="heading-5th--dark-hi">Your Aspiration</h2>
+
+                    <p class="paragraph-1th--dark" style="text-transform: capitalize; color: #80858A;">
+                        {{ aspiration_name }}</p>
+                    <h2 class="heading-5th--dark-hi mt-3">Positive Behaviors</h2>
+                    <select name="behaviors" style="text-transform: capitalize"
+                            class="form-control text-left col-md-9 col-lg-7 p-0 select-habit" id="positive_habit_design">
+                        <option value="">
+                            <p class="text-left">-- Select a behavior --</p>
+                        </option>
+                        {% for i in behaviours_list %}
+                        {% if i.value == '+ve' %}
+                        <option class="paragraph-1th--dark" value="{{ i.id }}">
+                            {{ i.title }}
+                        </option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+
+                    <div class="mt-5">
+                        <a href="#" class="btn btn--primary positive_habit_design">DESIGN HABIT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mt-3 mt-md-0">
+            <div class="item-blog wow move-up animate p-0">
+                <img style="height:300px; object-fit: cover; max-height:300px;" src="{% static aspiration_image %}"
+                     alt="aspiration image" class="w-100"/>
+
+                <div class="px-3 pb-2">
+                    <h2 class="heading-5th--dark-hi">Your Aspiration</h2>
+
+                    <!-- dont forget this form -->
+                    <p class="paragraph-1th--dark" style="text-transform: capitalize; color: #80858A;">
+                        {{ aspiration_name }}</p>
+                    <h2 class="heading-5th--dark-hi mt-3">Negative Behaviors</h2>
+                    <select name="behaviors" style="text-transform: capitalize"
+                            class="form-control text-left col-md-9 col-lg-7 p-0 select-habit" id="negative_habit_design">
+                        <option value="">
+                            <p class="text-left">-- Select a behavior --</p>
+                        </option>
+                        {% for i in behaviours_list %}
+                        {% if i.value == '-ve' %}
+                        <option class="paragraph-1th--dark" value="{{ i.id }}">
+                            {{ i.title }}
+                        </option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+
+                    <div class="mt-5">
+                        <a href="#" class="btn btn--primary w-sm-100 negative_habit_design">HABIT CONTROL</a>
+                        <span class="mx-1 d-none d-sm-inline"></span>
+                        <a href="#" class="btn btn--secondary mt-1 mt-sm-0 w-sm-100">WATCH VIDEO</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- end flex stuff -->
+
+<!-- stats -->
+<div class="section-number" id="habit_tracker">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ut--c umb--56">
+                    <h2 class="heading-4th--dark-hi wow move-up animate">
+                        HABIT TRACKING ANALYTICS
+                    </h2>
+                </div>
+
+                <p class="service-v1__paragraph paragraph-2th--dark-md wow move-up animate">
+                    Identity change is behavior change, we are our behaviors. As you build your habits, you move closer
+                    and closer to the person you want to be, each day accumulating evidence towards your new Identity
+                    <br><br>
+                    Your dreams and aspirations are in reach, that is the power of this process; change is gradual but
+                    inevitable, if you stick with it. This section is to help you monitor your progress and keep you on
+                    track.
+                </p>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <!-- Start Number -->
+            <div class="col-md-3">
+                <div class="number wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+                    <h3 class="number__name heading-5th--dark-hi">
+                        Scaled Habits
+                    </h3>
+                    <h6 class="number__percent heading-1th--dark-hi" style="visibility: visible;">
+                        {{ profile.scaled_habits }}
+                    </h6>
+                    <p class="number__paragraph paragraph-2th--dark-md">
+                        The habits you scale are often transformational and have a compound effect on other habits to
+                        accelerate your progress
+                    </p>
+                </div>
+            </div>
+            <!-- End Number -->
+
+            <!-- Start Number -->
+            <div class="col-md-3">
+                <div class="number wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+                    <h3 class="number__name heading-5th--dark-hi">
+                        Green Habits
+                    </h3>
+                    <h6 class="number__percent heading-1th--dark-hi" style="visibility: visible;">
+                        {{ profile.green_habits }}
+                    </h6>
+                    <p class="number__paragraph paragraph-2th--dark-md">
+                        This % of your habits you perform over 80% of the time. Way to go!
+                    </p>
+                </div>
+            </div>
+            <!-- End Number -->
+
+            <!-- Start Number -->
+            <div class="col-md-3">
+                <div class="number wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+                    <h3 class="number__name heading-5th--dark-hi">
+                        Yellow Habits
+                    </h3>
+                    <h6 class="number__percent heading-1th--dark-hi" style="visibility: visible;">
+                        {{ profile.yellow_habits }}
+                    </h6>
+                    <p class="number__paragraph paragraph-2th--dark-md">
+                        The % of your habits you perform between 50% - 80% of the time
+                    </p>
+                </div>
+            </div>
+            <!-- End Number -->
+
+            <!-- Start Number -->
+            <div class="col-md-3">
+                <div class="number wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+                    <h3 class="number__name heading-5th--dark-hi">
+                        Red Habits
+                    </h3>
+                    <h6 class="number__percent heading-1th--dark-hi" style="visibility: visible;">
+                        {{ profile.red_habits }}
+                    </h6>
+                    <p class="number__paragraph paragraph-2th--dark-md">
+                        The % of your habits you perform less than 50% of the time. Consider redesigning these habits or
+                        changing them if they are not working for you
+                    </p>
+                </div>
+            </div>
+            <!-- End Number -->
+
+        </div>
+    </div>
+</div>
+<!-- end stats -->
+
+
+<!-- charts -->
+<div class="section-number" id="habit_progress">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ut--c umb--24">
+                    <h2 class="heading-4th--dark-hi wow move-up animate">
+                        HABIT PROGRESS
+                    </h2>
+                </div>
+
+                <p class="service-v1__paragraph paragraph-2th--dark-md wow move-up animate">
+                    The two charts below show the progress you are making with your posistive habits, those habits
+                    working for you,
+                    and your negative habits, those that undermine your progress and you are working to gain control
+                    over.
+                    Chart one is a rolling seven day chart with positive habits shown as blue columns (gold if scaled),
+                    and the negative habits
+                    if any, shown in red
+                </p>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="chart-cover">
+                <canvas id="myChart"></canvas>
+            </div>
+            <br>
+            <div class="chart-cover">
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end charts -->
+
+
+<!-- start almost footer -->
+<div class="section-list-service">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6" id="faq">
+
+                <div class="umb--48">
+                    <h2 class="heading-4th--dark-hi wow move-up  animate"
+                        style="visibility: visible; animation-name: moveVertical;">
+                        FAQ
+                    </h2>
+                </div>
+
+                <div class="list-sv wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <ul class="list-sv__list">
+
+                        <li class="list-sv__item list-sv--drop closeMn">
+                            <a href="#" class="list-sv__link"><span>Our Technology</span></a>
+
+                            <p class="list-sv__list--lv2" style="display: none;">
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                                officia deserunt mollit anim id est laborum.
+                            </p>
+                        </li>
+
+                        <li class="list-sv__item list-sv--drop closeMn">
+                            <a href="#" class="list-sv__link"><span>Our Solution</span></a>
+
+                            <p class="list-sv__list--lv2" style="display: none;">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi officiis, nihil quod
+                                atque alias neque id. Est pariatur dignissimos quasi enim, odio, magnam cum saepe omnis
+                                similique repellat quidem blanditiis. Fugit architecto obcaecati aspernatur, nostrum quo
+                                iusto commodi doloribus.
+                            </p>
+
+                        </li>
+
+                        <li class="list-sv__item list-sv--drop closeMn">
+                            <a href="#" class="list-sv__link"><span>What We Downloads</span></a>
+
+                            <p class="list-sv__list--lv2" style="display: none;">
+                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
+                                quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+                                quia non numquam eius modi tempora.
+                            </p>
+
+                        </li>
+
+                        <li class="list-sv__item list-sv--drop closeMn">
+                            <a href="#" class="list-sv__link"><span>Our Company</span></a>
+
+                            <p class="list-sv__list--lv2" style="display: none;">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum doloremque dolor in,
+                                fugiat. Repudiandae inventore tempora nisi ipsam sequi sit minus enim nobis error
+                                impedit! Cupiditate, necessitatibus nulla inventore rerum deserunt quidem voluptatum,
+                                quaerat explicabo porro minima ipsam.
+                            </p>
+
+                        </li>
+
+                    </ul>
+
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6" id="get_in_touch">
+
+                <div class="umb--48">
+                    <h2 class="heading-4th--dark-hi wow move-up  animate"
+                        style="visibility: visible; animation-name: moveVertical;">
+                        Get In Touch
+                    </h2>
+                </div>
+                <!-- dont forget this form -->
+                <div class="form__group">
+                    <input id="name" name="name" type="text" class="form__input heading-7th--dark-md"
+                           placeholder="Your Name*" required>
+                    <label for="name" class="form__label heading-9th--dark-md">Your Name*</label>
+                </div>
+                <div class="form__group">
+                    <input id="email" name="email" type="email" class="form__input heading-7th--dark-md"
+                           placeholder="Email Address*" required>
+                    <label for="email" class="form__label heading-9th--dark-md">Email Address*</label>
+                </div>
+                <div class="form__group">
+                    <input id="subject" name="subject" type="text" class="form__input heading-7th--dark-md"
+                           placeholder="Subject*" required>
+                    <label for="subject" class="form__label heading-9th--dark-md">Subject*</label>
+                </div>
+                <div class="form__group">
+                    <textarea id="message" name="message" class="form__input heading-7th--dark-md"
+                              placeholder="Message*" rows="4" required></textarea>
+                    <label for="message" class="form__label heading-9th--dark-md">Message*</label>
+                </div>
+                <button id="submit" name="submit" type="submit" class="form__btn btn btn--primary">Submit Now</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end almost footer -->
+
+
+<!-- modal videos -->
+<div id="habit_designer" class="modal_video">
+    <div class="container w-100 h-100 position-relative p-2 d-flex p-sm-5">
+        <video style="width: 100%;" poster="//vjs.zencdn.net/v/oceans.png" controls>
+            <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+            <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm">
+            <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+
+            <img src="{% static 'main/assets/landing_image.jpg' %}" alt="Portfolio">
+        </video>
+        <i data-video="habit_designer" onclick="close_(this)" class="position-absolute material-icons">close</i>
+    </div>
+</div>
+
+<div id="behavior_video" class="modal_video">
+    <div class="container w-100 h-100 position-relative p-2 d-flex p-sm-5">
+        <video style="width: 100%;" poster="//vjs.zencdn.net/v/oceans.png" controls>
+            <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+            <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm">
+            <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+
+            <img src="{% static 'main/assets/landing_image.jpg' %}" alt="Portfolio">
+        </video>
+        <i data-video="behavior_video" onclick="close_(this)" class="position-absolute material-icons">close</i>
+    </div>
+</div>
+
+<div id="start_day_video" class="modal_video">
+    <div class="container w-100 h-100 position-relative p-2 d-flex p-sm-5">
+        <video style="width: 100%;" poster="//vjs.zencdn.net/v/oceans.png" controls>
+            <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+            <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm">
+            <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+
+            <img src="{% static 'main/assets/landing_image.jpg' %}" alt="Portfolio">
+        </video>
+        <i data-video="start_day_video" onclick="close_(this)" class="position-absolute material-icons">close</i>
+    </div>
+</div>
+
+<div id="vision_gallery_video" class="modal_video">
+    <div class="container w-100 h-100 position-relative p-2 d-flex p-sm-5">
+        <video style="width: 100%;" poster="{% static 'main/assets/landing_image.jpg' %}" controls muted id="intro"
+               preload="metadata">
+            <source autostart="false" src="{% static 'media/admin/intro.mp4' %}" type="video/mp4"/>
+            <img src="{% static 'main/assets/landing_image.jpg' %}" alt="Video player">
+        </video>
+
+        <video muted style="width: 100%;" class="d-none" id="slides" poster="{% static 'assets/landing_image.jpg' %}"
+               controls preload="true">
+            <source src="{% static '' %}media/{{ vision_gallery_video.file }}" type="video/webm">
+
+            <img src="{% static 'main/assets/landing_image.jpg' %}" alt="Video player">
+        </video>
+
+
+        <audio preload="metadata" controls id="audio" loop hidden>
+            <source src="{% static 'media/admin/audio.mp3' %}" type="audio/mp3">
+        </audio>
+
+        <!-- add second video -->
+        <i data-video="vision_gallery_video" onclick="close_(this)" class="position-absolute material-icons">close</i>
+    </div>
+</div>
+<!-- end modal videos -->
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"
+        integrity="sha512-b3xr4frvDIeyC3gqR1/iOi6T+m3pLlQyXNuvn5FiRrrKiMUJK3du2QqZbCywH6JxS5EOfW0DY0M6WwdXFbCBLQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $('.select-habit').change(function () {
+        var id = $(this).attr('id')
+        var value = $(this).val()
+
+        if (value != "") {
+            $('.' + id).attr('href', '/behaviour-mapping/habit-design/' + value)
+        }
+    })
+
+    $(function () {
+        $.ajax({
+            // dont forget this form
+            url: "{% url 'behaviours:get_weekly_chart_data' %}",
+            success: function (data_) {
+                // <block:setup:1>
+                const DATA_COUNT = 7;
+
+                const labels = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7']
+                const data = {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Positive habits',
+                            data: data_.positive,
+                            backgroundColor: 'rgb(54, 162, 235)',
+                            stack: 'Stack 0',
+                        },
+                        {
+                            label: 'Negative habits',
+                            data: data_.negative,
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            stack: 'Stack 1',
+                        },
+                        {
+                            label: 'Scaled habits',
+                            data: data_.scaled,
+                            backgroundColor: 'rgb(255, 205, 86)',
+                            stack: 'Stack 0',
+                        },
+                    ]
+                };
+                // </block:setup>
+
+                // <block:config:0>
+                const config = {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: '7-Day Rolling Habit Progress Chart'
+                            },
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            intersect: false,
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                stacked: true,
+                            },
+                            y: {
+                                beginAtZero: true,
+                                steps: 5,
+                                stepValue: 2,
+                                max: data_.max_number,
+                                grid: {
+                                    display: false
+                                },
+                                stacked: true
+                            }
+                        }
+                    }
+                };
+                // </block:config>
+
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, config);
+            }
+        })
+
+        // chart 2
+
+        // dont forget this form
+        $.ajax({
+            url: "{% url 'behaviours:get_trimonthly_chart_data' %}",
+            success: function (data_) {
+                // <block:setup:1>
+                const DATA_COUNT = 12;
+                const labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8', 'Week 9', 'Week 10', 'Week 11', 'Week 12'];
+
+                const data = {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Positive habits',
+                            data: data_.positive,
+                            backgroundColor: 'rgb(54, 162, 235)',
+                            stack: 'Stack 0',
+                        },
+                        {
+                            label: 'Negative habits',
+                            data: data_.negative,
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            stack: 'Stack 1',
+                        },
+                        {
+                            label: 'Scaled habits',
+                            data: data_.scaled,
+                            backgroundColor: 'rgb(255, 205, 86)',
+                            stack: 'Stack 0',
+                        },
+                    ]
+                };
+                // </block:setup>
+
+                // <block:config:0>
+                const config = {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: '12 week Rolling Habit Progress Chart'
+                            },
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            intersect: false,
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                stacked: true,
+                            },
+                            y: {
+                                beginAtZero: true,
+                                steps: 5,
+                                stepValue: 2,
+                                max: data_.max_number,
+                                grid: {
+                                    display: false
+                                },
+                                stacked: true
+                            }
+                        }
+                    }
+                };
+                // </block:config>
+
+                var ctx = document.getElementById('myChart2').getContext('2d');
+                var myChart = new Chart(ctx, config);
+            }
+        })
+    })
+
+
+</script>
+<script>
+    var vid1 = document.getElementById("intro");
+    var vid2 = document.getElementById("slides");
+    var audio = document.getElementById("audio");
+    audio.load()
+
+    function toggle(e) {
+        var elem = e
+        var attr = elem.getAttribute('data-target-video')
+        var t = document.querySelector('#' + attr)
+        t.classList.toggle('active')
+    }
+
+    function play() {
+        vid1.play()
+    }
+
+    function close_(e) {
+        var elem_ = e
+        var attr = elem_.getAttribute('data-video')
+        var t = document.querySelector('#' + attr)
+        t.classList.toggle('active')
+        audio.load()
+
+        vid1.classList.remove("d-none");
+        vid2.classList.add("d-none");
+        vid1.currentTime = 0;
+        vid2.currentTime = 0;
+    }
+
+    // for video
+    vid1.onpause = function () {
+        audio.pause()
+    };
+    vid1.onplay = function () {
+        audio.play()
+    };
+
+    vid2.onpause = function () {
+        audio.pause()
+    };
+    vid2.onplay = function () {
+        audio.play()
+    };
+
+    vid1.onended = function () {
+        vid2.classList.remove("d-none");
+        vid2.play()
+        vid1.classList.add("d-none");
+    };
+
+    vid2.onended = function () {
+        vid1.classList.remove("d-none");
+        vid2.classList.add("d-none");
+        audio.pause()
+        vid1.currentTime = 0;
+        vid2.currentTime = 0;
+        audio.currentTime = 0;
+        var t = document.querySelector('#vision_gallery_video')
+        t.classList.toggle('active')
+    };
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,66 @@
+{{% extends "main/base_template.html" %}
+
+{% block title %}Make Payment{% endblock %}
+
+{% block body %}
+<!-- Start Section Content Main -->
+<div class="section-content-main">
+    <div class="container">
+        <h1>Pay Now</h1>
+        <br>
+        <br>
+        <div class="row">
+            <!-- Start Content -->
+            <div class="col-lg-12">
+
+                <!-- Start List Product -->
+                <div class="row">
+                    <!-- Start Product -->
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 umb--40">
+                        <div class="item-product wow move-up animate">
+
+                            <form action="{% url 'payments:workbook_purchase' %}" method="post" class="item-product__side">
+                                {% csrf_token %}
+                                <a class="item-product__link">
+                                    {% load static %}
+                                    <img class="item-product__picture"
+                                        src="{% static 'main/assets/package_image.jpg' %}" alt="product">
+                                </a>
+                                <h3 class="item-product__name">
+                                    <a class="heading-6th--dark-hi-hover">
+                                        Get Our Workbook
+                                    </a>
+                                </h3>
+                                <h5 class="my-1">
+                                    Get 30% off for purchases before December 20th 2021.
+                                </h5>
+                                <div class="item-product__price">
+                                    <p class="item-product__price--sale heading-7th--primary-hi">£48.46 (till Dec 20th)
+                                    </p>
+                                    <p style="font-size: 16px"
+                                        class="item-product__price--origin heading-8th--dark-di-line-through">£63</p>
+
+                                </div>
+
+                                <button class="btn btn--secondary"><span class="text-up">Pay
+                                        Now</span></button>
+                                <br>
+                            </form>
+
+                        </div>
+                    </div>
+                    <!-- End Product -->
+
+                </div>
+                <!-- End List Product -->
+            </div>
+            <!-- End Content -->
+        </div>
+    </div>
+</div>
+<!-- End Section Content Main -->
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

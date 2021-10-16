@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Style Css -->
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/index.css' %}">
+    <title>{% block title %}{% endblock %} - Mind First</title>
+
+    {% block links %}
+    {% endblock %}
+</head>
+
+<body>
+<!-- navbar -->
+<div class="header ">
+    <!-- Start Nav -->
+    <div class="nav ">
+        <div class="container ">
+            <div class="nav__row align-items-center ">
+
+                <!-- Start Logo -->
+                <div class="nav__15percent ">
+                    <div class="nav__logo-box ">
+                        <a href="/ " class="nav__logo-link ">
+                            <img src="{% static 'main/assets/logo.png' %}" alt="Logo ">
+                        </a>
+                    </div>
+                </div>
+                <!-- End Logo -->
+
+                <!-- Start Navigation Main -->
+                <div class="nav__85percent position-static">
+                    <div class="nav__menu ">
+
+                        {% if not user.is_authenticated %}
+                        <ul class="nav__list d-ss-none-mxm d-xs-none-mxm d-sm-none-mxm d-md-none-mxm">
+                            <li class="nav__item">
+                                <a href="/" class="nav__link"><span>Home</span></a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="{% url 'main:our_products' %}" class="nav__link"><span>Products</span></a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="{% url 'main:product_details' product='5-day-challenge' %}"
+                                   class="nav__link"><span>5-day Challenge</span></a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="{% url 'accounts:reserve_membership_spot' %}" class="nav__link"><span>Become a member</span></a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav__btn ">
+
+                            <!-- Start Icon Login -->
+                            <li class="nav__item nav--drop nav--menu-drop nav__btn-item ">
+                                <a href="{% url 'accounts:sign_in_to_members_area' %}"
+                                   class="nav__btn-link nav__login-icon "
+                                   data-check-open="closeMxm ">
+                                    <i class="material-icons material-icons-outlined nav__btn-icon ">person</i>
+                                </a>
+                            </li>
+                            <!-- End Icon Login -->
+
+                            <!-- Start Icon Hamburger -->
+                            <li class="nav__btn-item d-lg-none-mxm d-xl-none-mxm">
+                                <a href="# " class="nav__btn-link nav__mobile-icon " data-check-open="closeMxm">
+                                    <i class="nav__mobile-icon--line "></i>
+                                </a>
+                            </li>
+                            <!-- End Icon Hamburger -->
+                        </ul>
+                        {% else %}
+                        <ul class="nav__btn ">
+
+                            <li class="nav__item nav--drop nav--menu-drop nav__btn-item ">
+                                <a href="#" class="nav__btn-link nav__login-icon position-relative"
+                                   data-check-open="closeMxm ">
+                                    <i class="material-icons material-icons-outlined nav__btn-icon ">person</i>
+                                    <ul class="nav__list--lv2 nav--effect" style="left: -100px;">
+                                        <li class="nav__item--lv2">
+                                            <a href="/logout" class="nav__link--lv2">LOGOUT</a>
+                                        </li>
+                                    </ul>
+                                    <span class="nav__cart-number heading-7th--light" style="font-size: 7px;
+                                    min-height: 0.1rem; min-width: 0.1rem; padding: 2px; top: 50%; right: 0;">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                </a>
+                            </li>
+
+                            <!-- Start Icon Hamburger -->
+                            <li class="nav__btn-item ">
+                                <a href="# " class="nav__btn-link nav__mobile-icon " data-check-open="closeMxm">
+                                    <i class="nav__mobile-icon--line "></i>
+                                </a>
+                            </li>
+                            <!-- End Icon Hamburger -->
+
+                        </ul>
+
+                        {% endif %}
+                    </div>
+
+                </div>
+                <!-- End Navigation Main -->
+            </div>
+        </div>
+    </div>
+    <!-- End Nav -->
+    <div class="nav--false "></div>
+</div>
+<!-- end navbar -->
+
+<!-- other bars -->
+<!-- Start Menu Mobile Popup -->
+<div class="menu-mobile-popup">
+
+    <div class="menu-mb">
+
+        <!-- Start Menu Popup Header -->
+        <div class="menu-mb__header">
+
+            <div class="menu-mb__logo-box">
+                <a href="index.html" class="menu-mb__logo-link">
+                    <img src="{% static 'main/assets/logo.png' %}" alt="Logo">
+                </a>
+            </div>
+            <div class="menu-mb__close-box">
+                <a href="#" class="menu-mb__close-link" data-check-open="closeMxm">
+                </a>
+            </div>
+
+        </div>
+        <!-- End Menu Popup Header -->
+
+        <!-- Start Menu Popup Content -->
+        <div class="menu-mb__content">
+
+            <ul class="menu-mb__list">
+                {% if user.is_authenticated %}
+                <li class="menu-mb__item">
+                    <a href="/" class="menu-mb__link"><span>Home</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'main:our_products' %}" class="menu-mb__link"><span>Products</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'main:product_details' product='5-day-challenge' %}" class="menu-mb__link">5-Day
+                        Challenge</a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'main:members_area' %}"
+                       class="menu-mb__link"><span>Members Area</span></a>
+                </li>
+
+                <li class="menu-mb__item--lv2 menu-mb--drop">
+                    <a href="#" class="menu-mb__link">Get Started</a>
+                    <ul class="menu-mb__list--lv3">
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=1 %}" class="menu-mb__link--lv3">Day 1 -
+                                Aspirations</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=2 %}" class="menu-mb__link--lv3">Day 2 - Values</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=3 %}" class="menu-mb__link--lv3">Day 3 - Start Your
+                                Day</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=4 %}" class="menu-mb__link--lv3">Day 4 - Behaviour
+                                Mapping</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=5 %}" class="menu-mb__link--lv3">Day 5 - Habit
+                                Design</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=6 %}" class="menu-mb__link--lv3">Day 6 - Habit
+                                Review</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=7 %}" class="menu-mb__link--lv3">Day 7 - Habit
+                                Tracking</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=8 %}" class="menu-mb__link--lv3">Day 8 - Scaling
+                                Habits</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=9 %}" class="menu-mb__link--lv3">Day 9 - Adding
+                                Habits</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=10 %}" class="menu-mb__link--lv3">Day 10 - Removing
+                                Habits</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=11 %}" class="menu-mb__link--lv3">Day 11 - Negative
+                                Habits</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=12 %}" class="menu-mb__link--lv3">Day 12 - Limiting
+                                Beliefs</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=13 %}" class="menu-mb__link--lv3">Day 13 -
+                                Troubleshooting Habits</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:day' day_id=14 %}" class="menu-mb__link--lv3">Day 14 - Review</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-mb__item--lv2 menu-mb--drop">
+                    <a href="#" class="menu-mb__link">Mind Workshop</a>
+                    <ul class="menu-mb__list--lv3">
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:mind_workshop' week_id=1 %}" class="menu-mb__link--lv3">Week
+                                1</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:mind_workshop' week_id=2 %}" class="menu-mb__link--lv3">Week
+                                2</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:mind_workshop' week_id=3 %}" class="menu-mb__link--lv3">Week
+                                3</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:mind_workshop' week_id=4 %}" class="menu-mb__link--lv3">Week
+                                4</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:mind_workshop' week_id=5 %}" class="menu-mb__link--lv3">Week
+                                5</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:mind_workshop' week_id=6 %}" class="menu-mb__link--lv3">Week
+                                6</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:mind_workshop' week_id=7 %}" class="menu-mb__link--lv3">Week
+                                7</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:mind_workshop' week_id=8 %}" class="menu-mb__link--lv3">Week
+                                8</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-mb__item--lv2 menu-mb--drop">
+                    <a href="#" class="menu-mb__link">Take Control OF Your Bad Habits</a>
+                    <ul class="menu-mb__list--lv3">
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:take_control_over_your_habits' week_id=1 %}" class="menu-mb__link--lv3">Week 1</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:take_control_over_your_habits' week_id=2 %}" class="menu-mb__link--lv3">Week 2</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:take_control_over_your_habits' week_id=3 %}" class="menu-mb__link--lv3">Week 3</a>
+                        </li>
+
+                        <li class="menu-mb__item--lv3">
+                            <a href="{% url 'template:take_control_over_your_habits' week_id=4 %}" class="menu-mb__link--lv3">Week 4</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="#" class="menu-mb__link"><span>Create an environment for success</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'main:members_area' %}#faq" class="menu-mb__link"><span>FAQ</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'main:members_area' %}#get_in_touch" class="menu-mb__link"><span>Get In
+                                    Touch</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'accounts:logout' %}" class="menu-mb__link"><span>Logout</span></a>
+                </li>
+                {% else %}
+                <li class="menu-mb__item">
+                    <a href="/" class="menu-mb__link"><span>Home</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'main:our_products' %}" class="menu-mb__link"><span>Products</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'main:product_details' product='5-day-challenge' %}" class="menu-mb__link">5-Day
+                        Challenge</a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'accounts:sign_in_to_members_area' %}" class="menu-mb__link"><span>Members Area Login</span></a>
+                </li>
+
+                <li class="menu-mb__item">
+                    <a href="{% url 'accounts:reserve_membership_spot' %}" style="background-color: #592F75"
+                       class="menu-mb__link"><span>Become A
+                                    Memeber</span></a>
+                </li>
+                {% endif %}
+            </ul>
+
+
+        </div>
+        <!-- End Menu Popup Content -->
+    </div>
+
+</div>
+<!-- End Menu Mobile Popup -->
+<!-- end other bars -->
+
+<div class="col-12 col-md-10 alert-wrapper">
+
+    <div class="position-relative">
+
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissable fade show d-flex my-4 p-3" role="alert">
+            <p class="col-11">
+                {{ message }}
+            </p>
+            <button type="button" data-dismiss="alert" class="close col-1">
+                <span aria-hidden="true" class="material-icons">close</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alert-dismissable fade show d-flex my-4 p-3" role="alert">
+            <p class="col-11">
+                {{ message }}
+            </p>
+            <button type="button" data-dismiss="alert" class="close col-1">
+                <span aria-hidden="true" class="material-icons">close</span>
+            </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+    </div>
+
+</div>
+
+<div id="content">
+    {% block body %}
+    {% endblock %}
+</div>
+
+<!-- Start Footer -->
+<div class="footer" id="get_in_touch">
+
+    <!-- Start Info F -->
+    <div class="info-f">
+        <div class="container">
+            <div class="row">
+
+                <!-- Start List F -->
+                <div class="col-sm-6 col-lg-3 order-2 order-lg-4">
+                    <div class="info-f__side2">
+                        <!-- Start Title -->
+                        <h3 class="info-f__title heading-6th--light">
+                            Get in Touch
+                        </h3>
+                        <!-- End Title -->
+
+                        <!-- Start Info List -->
+                        <div class="info-f__list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="material-icons info-f__icon">home</i>568 East Grapes Lane, Las
+                                        Vegas,
+                                        Alaska
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="material-icons info-f__icon">phone</i>(001) 987 654 321
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="material-icons info-f__icon">email</i>hello@mindfirst.com
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- End Info List -->
+
+
+                    </div>
+                </div>
+                <!-- End List F -->
+
+            </div>
+        </div>
+    </div>
+    <!-- Start Info F -->
+
+    <!-- Start Info Box 2 -->
+    <div class="info-box-2">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- Start Info Copyright -->
+                <div class="col-12">
+                    <div class="info-box-2__contact">
+                        <a href="#" class="info-box-2__contact--link text-center">&copy; 2021 Mind First Group
+                            Limited</a>
+                    </div>
+                </div>
+                <!-- End Info Copyright -->
+            </div>
+        </div>
+    </div>
+    <!-- End Info Box 2 -->
+
+</div>
+<!-- End Footer -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+<script src="{% static 'main/js/constant/imagesloaded.pkgd.min.js' %} "></script>
+<script src="{% static 'main/js/constant/jquery.waypoints.js' %} "></script>
+<script src="{% static 'main/js/constant/jquery.counterup2.min.js' %} "></script>
+<script src="{% static 'main/js/constant/wow.js' %} "></script>
+<script src="{% static 'main/js/constant/swiper.js' %} "></script>
+<script src="{% static 'main/js/constant/masonry_count.js' %} "></script>
+<script src="{% static 'main/js/constant/jquery.wavify.js' %} "></script>
+
+<script src="{% static 'main/js/constant/extend3.js' %} "></script>
+<script src="{% static 'main/js/constant/wow_edit.js' %} "></script>
+<script src="{% static 'main/js/constant/particles.js' %} "></script>
+<script src="{% static 'main/js/constant/particles_2.js' %} "></script>
+<script src="{% static 'main/js/constant/particles_edit.js' %} "></script>
+
+
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script src="{% static 'main/js/main.js' %} "></script>
+<script>
+    const T = '{{ csrf_token }}'
+
+</script>
+{% block scripts %}
+{% endblock %}
+</body>
+
+</html>

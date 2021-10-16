@@ -1,0 +1,109 @@
+{% extends "main/base_template.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block links %}
+{% endblock %}
+
+{% block body %}
+<!-- Start Section Content Main -->
+<div class="section-content-main">
+    <div class="container">
+        <div class="row">
+
+            <!-- Start Content -->
+            <div class="col-lg-6">
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sign__title heading-4th--dark-hi">
+                            Login Account
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <form action="" class="sign__form" method="post">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <div class="sign__group">
+                                <input name="email" id="email" type="text" class="sign__input heading-7th--dark-md"
+                                       placeholder="Email*" required>
+                                <label for="email" class="sign__label heading-9th--dark-md">Email*</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="sign__group">
+                                <input name="password" id="password" type="password"
+                                       class="sign__input heading-7th--dark-md"
+                                       placeholder="Password*" required>
+                                <label for="password" class="sign__label heading-9th--dark-md">Password*</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="sign__wrap">
+                                <button type="submit" class="sign__btn btn btn--primary">
+                                    Login Now
+                                </button>
+                                <span class="mx-3"></span>
+                                <a href="{% url 'accounts:reserve_membership_spot' %}"
+                                   class="sign__btn btn btn--secondary">
+                                    Register
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="sign__wrap">
+                                <a href="{% url 'accounts:user_forgot_password' %}" class="sign__btn  btn--6th">
+                                    Forgot Password?
+                                </a>
+                                <a href="{% url 'accounts:logout' %}" class="sign__btn  btn--6th">
+                                    Logout
+                                </a>
+                                <a href="{% url 'main:homepage' %}" class="sign__btn  btn--6th">
+                                    Home
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End Content -->
+
+            <!-- Start Content Right -->
+            <div class="col-lg-6 order-lg-first">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sign__title heading-4th--dark-hi">
+                            Welcome to Mind First
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sign__paragraph paragraph-2th--dark-md">
+
+                            Welcome to Mind First. Consider today to be a breakthrough day in your life,
+                            the start of something; as you work through the program, learn the powerful lessons,
+                            practice and put into action what you learn,
+                            you will gain control over your life and the direction you want it to take
+                        </div>
+                    </div>
+                </div>
+                <!-- End Content Right -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Section Content Main -->
+{% endblock %}

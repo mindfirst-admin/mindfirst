@@ -1,0 +1,167 @@
+{% extends "main/base_template.html" %}
+
+{% block title %}Product Details{% endblock %}
+
+<!-- loading static -->
+{% load static %}
+
+{% block links %}
+<style>
+    .banner {
+        padding: 20px;
+        width: 100%;
+        position: relative;
+    }
+
+    .banner::before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: transparent;
+        border-bottom-color: #592F75;
+        border-width: 25px;
+        margin-left: -25px;
+        z-index: 5;
+        transform: rotate(180deg)
+    }
+
+    .banner span {
+        width: 100%;
+        position: relative;
+        background: #592F75;
+    }
+
+    .banner span::after {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: transparent;
+        border-bottom-color: #11BDA3;
+        border-width: 13px;
+        margin-left: -13px;
+        margin-top: 12px;
+        z-index: 10;
+        transform: rotate(180deg)
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<section id="main_sect" class="my-5 container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="ut--c mb-3 mb-sm-0">
+                <h2 class="heading-4th--dark-hi wow move-up animate"
+                    style="visibility: visible; animation-name: moveVertical;">{{ main_header }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap container-fluid">
+            <div class="col-lg-6 p-0">
+                <img src="{% static '' %}{{ image }}" alt="image"
+                    style="min-height: 90%; object-fit: cover; width: 100%;">
+                <br>
+                <br>
+                <a href="{{ link }}" class="btn btn--primary" style="font-size: 16px">Buy Now</a>
+            </div>
+
+            <div class="col-lg-6">
+                <h2 class="heading-5th--dark text-center text-md-left w-100">{{ sub_header }}</h2>
+                <br>
+                <p class="heading-6th--dark font-weight-light">
+                    {{ p1 }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+
+
+<div class="banner wow move-up animate bg-purple">
+    <h1 class="heading-4th--dark text-center text-light w-100">Tools</h1>
+    <span></span>
+</div>
+<br>
+<br>
+
+<section>
+    <br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap container-fluid">
+            <div class="col-lg-6 p-0">
+                <img src="{% static '' %}{{ image }}" alt="image"
+                    style="min-height: 90%; object-fit: cover; width: 100%;">
+                <br>
+                <br>
+                <a href="{{ link }}" class="btn btn--primary" style="font-size: 16px">Buy Now</a>
+            </div>
+
+            <div class="col-lg-6">
+                <h2 class="heading-5th--dark text-center text-md-left w-100">{{ sub_header }}</h2>
+                <br>
+                <p class="heading-6th--dark font-weight-light">
+                    {{ p2 }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+
+<div class="banner wow move-up animate bg-purple">
+    <h1 class="heading-4th--dark text-center text-light w-100">Tools</h1>
+    <span></span>
+</div>
+<br>
+<br>
+
+<section>
+    <br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap container-fluid">
+            <div class="col-lg-6 p-0">
+                <img src="{% static '' %}{{ image }}" alt="image"
+                    style="min-height: 90%; object-fit: cover; width: 100%;">
+                <br>
+                <br>
+                <a href="{{ link }}" class="btn btn--primary" style="font-size: 16px">Buy Now</a>
+            </div>
+
+            <div class="col-lg-6">
+                <h2 class="heading-5th--dark text-center text-md-left w-100">{{ sub_header }}</h2>
+                <br>
+                <p class="heading-6th--dark font-weight-light">
+                    {{ p3 }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

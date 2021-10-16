@@ -1,0 +1,294 @@
+{% extends 'main/base_template.html' %}
+
+{% block title %}Make Life A Little Better{% endblock %}
+
+<!-- loading static -->
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"/>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+<style>
+    .banner {
+        padding: 20px;
+        width: 100%;
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .banner::after {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: transparent;
+        border-bottom-color: #592F75;
+        border-width: 25px;
+        margin-left: -25px;
+        z-index: 5;
+    }
+
+    .banner span {
+        width: 100%;
+        position: relative;
+    }
+
+    .banner span::after {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: transparent;
+        border-bottom-color: #009e9e;
+        border-width: 13px;
+        margin-left: -13px;
+        margin-bottom: 12px;
+        z-index: 10;
+    }
+
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+    }
+
+    .swiper-slide.swiper-slide-visible.swiper-slide-active {
+        opacity: 1;
+    }
+
+    @media (max-width: 576px) {
+        .swiper-slide h2 {
+            font-size: 30px;
+        }
+    }
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+<section id="main_sect" class="my-5 container">
+    <div class="d-flex justify-content-between flex-wrap my-3 mb-md-5">
+        <div class="col-lg-6">
+            <h2 class="heading-3th--dark-hi wow move-up animate text-left"
+                style="visibility: visible; animation-name: moveVertical;">Make Life A Little Better</h2>
+            <br>
+            <h2 class="paragraph-1th--dark-hi wow move-up animate text-left"
+                style="visibility: visible; animation-name: moveVertical;">A stress buster, a mood changer and something
+                to help you get what you want (more often).
+            </h2>
+            <br>
+            <video style="width: 100%;" poster="{% static 'main/assets/landing_image.jpg' %}" controls>
+                <source src="{% static 'media/admin/intro.mp4' %}" type="video/mp4">
+
+                <img src="{% static 'main/assets/landing_image.jpg' %}" alt="Portfolio">
+            </video>
+        </div>
+        <div class="col-lg-6">
+            <br class="d-none d-lg-block">
+            <br class="d-none d-lg-block">
+            <br class="d-none d-lg-block">
+            <br class="d-none d-lg-block">
+            <br>
+            <br>
+            <h2 class="heading-5th--dark-hi wow move-up animate text-center"
+                style="visibility: visible; animation-name: moveVertical;">GET YOUR E-BOOK NOW!</h2>
+            <br>
+            <h3 class="paragraph-1th--dark wow move-up animate text-center">
+                Submit the form below and we will email you the three pearls of wisdom e-book. Thank you.
+            </h3>
+
+            <br>
+            <form action="https://wedoaccounting83932.activehosted.com/proc.php" class="mt-2">
+                {% csrf_token %}
+                <input type="hidden" name="u" value="15"/>
+                <input type="hidden" name="f" value="15"/>
+                <input type="hidden" name="s"/>
+                <input type="hidden" name="c" value="0"/>
+                <input type="hidden" name="m" value="0"/>
+                <input type="hidden" name="act" value="sub"/>
+                <input type="hidden" name="v" value="2"/>
+                <div class="sign__group mb-4 wow move-up animate">
+                    <input name="name" id="name" type="text" class="sign__input heading-7th--dark-md"
+                           placeholder="Enter your first name" required>
+                    <!-- <label for="email" class="sign__label heading-9th--dark-md">Email*</label> -->
+                </div>
+                <div class="sign__group mb-5 wow move-up animate">
+                    <input name="email" id="email" type="text" class="sign__input heading-7th--dark-md"
+                           placeholder="Enter your email" required>
+                    <!-- <label for="email" class="sign__label heading-9th--dark-md">Email*</label> -->
+                </div>
+                <button type="submit" class="sign__btn btn btn--primary w-100 wow move-up animate">
+                    <p class="heading-5th--dark text-light p-2">GET YOUR E-BOOK!</p>
+
+                </button>
+            </form>
+
+            <p class="heading-7th--dark wow move-up animate text-dark text-center">
+                Earn More. Live More. Be More. Give More
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="with_p_b" class="">
+    <div class="position-relative mt-3 py-5 container">
+        <h3 class="heading-5th--dark wow move-up animate text-center">Imagine if You Could</h3>
+
+        <div class="swiper-container wow move-up animate text-center py-md-5">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <h2 class="text-purple heading-3th--dark font-weight-bold">
+                        Conquer Your
+                        Fear Of
+                        Failure
+                    </h2>
+                </div>
+                <div class="swiper-slide">
+                    <h2 class="text-purple heading-3th--dark font-weight-bold">
+                        Start Earning
+                        What You
+                        Deserve</h2>
+                </div>
+                <div class="swiper-slide">
+                    <h2 class="text-purple heading-3th--dark font-weight-bold">
+                        Reach Your
+                        Mental and
+                        Emotional Fitness Goals</h2>
+                </div>
+            </div>
+        </div>
+
+        <div id="particles-js--v1" class="particles--v1">
+            <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1349"
+                    height="703"></canvas>
+        </div>
+    </div>
+    <br>
+
+    <div class="banner wow move-up animate bg-purple">
+        <span></span>
+        <h1 class="heading-2th--dark text-center text-light w-100">Mind First<sub style="font-size: 12px;">TM</sub></h1>
+        <p class="heading-5th--dark text-center text-light w-100 font-weight-light">Help to think differently to get
+            what you want.</p>
+    </div>
+</section>
+
+<!-- begin about -->
+<br>
+<div id="About" class="mt-5">
+    <div class="container">
+
+        <!-- Start Title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="ut--c umb--56">
+                    <h3 class="heading-4th--dark-hi wow move-up  animate"
+                        style="visibility: visible; animation-name: moveVertical;">
+                        In Your Free E-book
+
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!-- End Title -->
+
+        <!-- Start List Service -->
+        <div class="row">
+
+            <!-- Start Service -->
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="service-v1 wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <h4 class="service-v1__name heading-6th--dark-hi">
+                        Help To <span class="font-weight-light text-dark">Beat Stress</span>
+                    </h4>
+                    <div class="service-v1__line"></div>
+
+                    <p class="service-v1__paragraph paragraph-2th--dark-md">
+                        To create the life you want you have to think differently. Mind First will show you how to
+                        do just that, Using the latest breakthroughs in neuroscience we have developed a series of
+                        exercises so you can train your brain for change
+                    </p>
+
+                </div>
+            </div>
+            <!-- End Service -->
+
+            <!-- Start Service -->
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="service-v1 wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <h4 class="service-v1__name heading-6th--dark-hi">
+                        Help To <span class="font-weight-light text-dark">Change Your Mood</span>
+                    </h4>
+                    <div class="service-v1__line"></div>
+
+                    <p class="service-v1__paragraph paragraph-2th--dark-md">
+                        We are our behaviours, we are consistent with who we are. To achieve what we want, we have
+                        to act differently. Mind First provides you with the tools and support to do just that a
+                        tried and tested method that works
+                    </p>
+
+                </div>
+            </div>
+            <!-- End Service -->
+
+            <!-- Start Service -->
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="service-v1 wow move-up  animate" style="visibility: visible; animation-name: moveVertical;">
+
+                    <h4 class="service-v1__name heading-6th--dark-hi">
+                        Help To <span class="font-weight-light text-dark">Get What You Want</span>
+                    </h4>
+                    <div class="service-v1__line"></div>
+
+                    <p class="service-v1__paragraph paragraph-2th--dark-md">
+                        One of the biggest challenges we face when trying to change is the environment we live in,
+                        the physical environment, where we live and work, the people we interact with and our mental
+                        environment. Mind First helps you design an environment for success
+                    </p>
+
+                </div>
+            </div>
+            <!-- End Service -->
+        </div>
+        <!-- End List Service -->
+    </div>
+</div>
+<!-- end about -->
+<br>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'main/js/particle_copy.js' %} "></script>
+<script>
+    const swiper = new Swiper('.swiper-container', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        navigation: false,
+        arrows: false,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        effect: "fade",
+        fadeEffect: {
+            crossFade: true
+        },
+    })
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,294 @@
+{% extends "main/base_template.html" %}
+
+{% block title %}Our Products{% endblock %}
+
+<!-- loading static -->
+{% load static %}
+
+{% block links %}
+<style>
+    .banner {
+        padding: 20px;
+        width: 100%;
+        position: relative;
+    }
+
+    .banner::before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: transparent;
+        border-bottom-color: #592F75;
+        border-width: 25px;
+        margin-left: -25px;
+        z-index: 5;
+        transform: rotate(180deg)
+    }
+
+    .banner span {
+        width: 100%;
+        position: relative;
+    }
+
+    .banner span::after {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: transparent;
+        border-bottom-color: #11BDA3;
+        border-width: 13px;
+        margin-left: -13px;
+        margin-top: 12px;
+        z-index: 10;
+        transform: rotate(180deg)
+    }
+
+    ul.list {
+        margin: 20px 0;
+    }
+
+    ul.list li {
+        margin-bottom: 15px;
+    }
+
+    ul.list,
+    ul.list li {
+        list-style-type: disc !important;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<section id="main_sect" class="my-5 container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="ut--c mb-3 mb-sm-0">
+                <h2 class="heading-4th--dark-hi wow move-up animate"
+                    style="visibility: visible; animation-name: moveVertical;">Our Most Popular Products</h2>
+            </div>
+        </div>
+        <br><br>
+        <br>
+        <div class="col-12">
+            <div class="ut--c mb-1 mb-sm-4">
+                <h3 class="heading-4th--dark-hi wow move-up  animate"
+                    style="visibility: visible; animation-name: moveVertical;">
+
+                    Get Training
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="book">
+    <div class="banner wow move-up animate bg-purple">
+        <h1 class="heading-4th--dark text-center text-light w-100">Progress Equals Happiness</h1>
+        <span></span>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap container-fluid">
+            <div class="col-lg-7">
+                <h2 class="heading-5th--dark text-center text-md-left w-100">Exceptional Life Coaching</h2>
+                    <ul class="list ml-3">
+                        <li class="heading-6th--dark font-weight-light">
+                            Daily VIP Coaching and support – exciting tools, interviews, Q&A sessions and more are all
+                            in our caring and compassionate community, right at your fingertips.
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            Exclusive LIVE Expert Trainings every 2 weeks – we’ve assembled an incredible team of
+                            experts to help you understand and make progress in every area of your life, from finance to
+                            fun, relationships and more – and we’re adding in new experts from all over the globe to
+                            make absolutely certain you’re getting all the best information possible.
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            Every single session will bring science and evidence based techniques and strategies to the
+                            table and not only give you a push when needed, they’ll give you a hand when things don’t
+                            look like they’re going your way
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            You’ll start to discover emotional, time and choice freedom that you may never have
+                            experienced before in your life.
+                        </li>
+                    </ul>
+            </div>
+            <div class="col-lg-5 p-0">
+                <img src="{% static 'main/assets/landing_image.jpg' %}" alt="image"
+                    style="min-height: 50vh; object-fit: cover; width: 100%;">
+                <br>
+                <br>
+                <a href="{% url 'main:product_details' product='book' %}" class="btn btn--primary">Learn more</a>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section id="workbook">
+    <div class="banner wow move-up animate bg-purple">
+        <h1 class="heading-4th--dark text-center text-light w-100">Our Workbook</h1>
+        <span></span>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap container-fluid">
+            <div class="col-lg-7">
+                <h2 class="heading-5th--dark text-center text-md-left w-100">Exceptional Life Coaching</h2>
+                    <ul class="list ml-3">
+                        <li class="heading-6th--dark font-weight-light">
+                            Daily VIP Coaching and support – exciting tools, interviews, Q&A sessions and more are all
+                            in our caring and compassionate community, right at your fingertips.
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            Exclusive LIVE Expert Trainings every 2 weeks – we’ve assembled an incredible team of
+                            experts to help you understand and make progress in every area of your life, from finance to
+                            fun, relationships and more – and we’re adding in new experts from all over the globe to
+                            make absolutely certain you’re getting all the best information possible.
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            Every single session will bring science and evidence based techniques and strategies to the
+                            table and not only give you a push when needed, they’ll give you a hand when things don’t
+                            look like they’re going your way
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            You’ll start to discover emotional, time and choice freedom that you may never have
+                            experienced before in your life.
+                        </li>
+                    </ul>
+            </div>
+            <div class="col-lg-5 p-0">
+                <img src="{% static 'main/assets/landing_image.jpg' %}" alt="image"
+                    style="min-height: 50vh; object-fit: cover; width: 100%;">
+                <br>
+                <br>
+                <a href="{% url 'main:product_details' product='workbook' %}" class="btn btn--primary">Learn more</a>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section id="5_day_challenge">
+    <div class="banner wow move-up animate bg-purple">
+        <h1 class="heading-4th--dark text-center text-light w-100">5-Day Challenge</h1>
+        <span></span>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap container-fluid">
+            <div class="col-lg-7">
+                <h2 class="heading-5th--dark text-center text-md-left w-100">Exceptional Life Coaching</h2>
+                    <ul class="list ml-3">
+                        <li class="heading-6th--dark font-weight-light">
+                            Daily VIP Coaching and support – exciting tools, interviews, Q&A sessions and more are all
+                            in our caring and compassionate community, right at your fingertips.
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            Exclusive LIVE Expert Trainings every 2 weeks – we’ve assembled an incredible team of
+                            experts to help you understand and make progress in every area of your life, from finance to
+                            fun, relationships and more – and we’re adding in new experts from all over the globe to
+                            make absolutely certain you’re getting all the best information possible.
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            Every single session will bring science and evidence based techniques and strategies to the
+                            table and not only give you a push when needed, they’ll give you a hand when things don’t
+                            look like they’re going your way
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            You’ll start to discover emotional, time and choice freedom that you may never have
+                            experienced before in your life.
+                        </li>
+                    </ul>
+            </div>
+            <div class="col-lg-5 p-0">
+                <img src="{% static 'main/assets/landing_image.jpg' %}" alt="image"
+                    style="min-height: 50vh; object-fit: cover; width: 100%;">
+                <br>
+                <br>
+                <a href="{% url 'main:product_details' product='5-day-challenge' %}" class="btn btn--primary">Learn more</a>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section id="membership">
+    <div class="banner wow move-up animate bg-purple">
+        <h1 class="heading-4th--dark text-center text-light w-100">Mind First Membership</h1>
+        <span></span>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap container-fluid">
+            <div class="col-lg-7">
+                <h2 class="heading-5th--dark text-center text-md-left w-100">Exceptional Life Coaching</h2>
+                    <ul class="list ml-3">
+                        <li class="heading-6th--dark font-weight-light">
+                            Daily VIP Coaching and support – exciting tools, interviews, Q&A sessions and more are all
+                            in our caring and compassionate community, right at your fingertips.
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            Exclusive LIVE Expert Trainings every 2 weeks – we’ve assembled an incredible team of
+                            experts to help you understand and make progress in every area of your life, from finance to
+                            fun, relationships and more – and we’re adding in new experts from all over the globe to
+                            make absolutely certain you’re getting all the best information possible.
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            Every single session will bring science and evidence based techniques and strategies to the
+                            table and not only give you a push when needed, they’ll give you a hand when things don’t
+                            look like they’re going your way
+                        </li>
+                        <li class="heading-6th--dark font-weight-light">
+                            You’ll start to discover emotional, time and choice freedom that you may never have
+                            experienced before in your life.
+                        </li>
+                    </ul>
+            </div>
+            <div class="col-lg-5 p-0">
+                <img src="{% static 'main/assets/landing_image.jpg' %}" alt="image"
+                    style="min-height: 50vh; object-fit: cover; width: 100%;">
+                <br>
+                <br>
+                <a href="{% url 'main:product_details' product='membership' %}" class="btn btn--primary">Learn more</a>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

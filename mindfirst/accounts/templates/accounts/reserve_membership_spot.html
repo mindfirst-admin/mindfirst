@@ -1,0 +1,142 @@
+{% extends "main/base_template.html" %}
+
+{% block title %}Sorry We're Full{% endblock %}
+
+{% block links %}
+{% endblock %}
+
+{% block body %}
+<!-- End Section Banner Static -->
+<div class="section-content-main">
+    <div class="container">
+        <div class="row">
+            <!-- Start Content Right -->
+            <div class="col-lg-6">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sign__title heading-4th--dark-hi">
+                            Unfortunately our membership program is full
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sign__paragraph paragraph-2th--dark-md">
+                            We are sorry, but we currently have no spaces free for our membership program.
+                            <br>
+                            <br>
+                            To ensure we provide the best possible support to members and to help them get the most from
+                            the program, we provide members the opportunity to book a monthly face to face zoom call.
+                            This allows me to give dedicated personal help and coaching, 1 to 1 support.
+                            <br>
+                            <br>
+                            Thee downside of this is that it restricts the number of members we can support in the
+                            program to 100 places.
+                            <br>
+                            <br>
+                            The good news is that each month 1 or 2 places do come free so, if you would like to be
+                            considered for a place on the program when the next place becomes available, please complete
+                            the form below.
+                            <br>
+                            <br>
+                            I hope you understand it course it would be the easy to take on more and more members, but
+                            we value above all else the success members get from the program above profit.
+                            <br>
+                            <br>
+                            So, we made the decision not to 'water down' the support provided and hence the 100
+                            membership limit, I an sure when you are a member you will appreciate the importance of
+                            putting the care of memebers ahead of profit. Thank you for your patience.
+                            <br>
+                            <br>
+                            Be Safe, Be Kind
+                            <br>
+                            <br>
+                            Kindest Regards
+                            Paul
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="sign__wrap">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Content Right -->
+
+            <!-- Start Content -->
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sign__title heading-4th--dark-hi">
+                            Get you place reserved
+                            <p class="paragraph-2th--dark">Please add your detais below to secure the next available
+                                Membership place. Thank you.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <form action="https://wedoaccounting83932.activehosted.com/proc.php" class="sign__form"
+                        method="post" id="waitlist">
+                        {% csrf_token %}
+                        <input type="hidden" name="u" value="15" />
+                        <input type="hidden" name="f" value="15" />
+                        <input type="hidden" name="s" />
+                        <input type="hidden" name="c" value="0" />
+                        <input type="hidden" name="m" value="0" />
+                        <input type="hidden" name="act" value="sub" />
+                        <input type="hidden" name="v" value="2" />
+                        <div class="col-md-12">
+
+                            <div class="sign__group">
+                                <input name="firstname" id="firstname" type="text"
+                                    class="sign__input heading-7th--dark-md" placeholder="First Name*" required>
+                                <label for="firstname" class="sign__label heading-9th--dark-md">First Name*</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+
+                            <div class="sign__group">
+                                <input name="lastname" id="lastname" type="text"
+                                    class="sign__input heading-7th--dark-md" placeholder="Last Name*" required>
+                                <label for="lastname" class="sign__label heading-9th--dark-md">Last Name*</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+
+                            <div class="sign__group">
+                                <input name="email" id="email" type="text" class="sign__input heading-7th--dark-md"
+                                    placeholder="Email*" required>
+                                <label for="email" class="sign__label heading-9th--dark-md">Email*</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="sign__wrap">
+                                <button type="submit" class="sign__btn btn btn--primary waitlist">Reserve Your Place</button>
+                                <span class="mx-3"></span>
+                                <a href="{% url 'accounts:sign_in_to_members_area' %}" class="sign__btn btn btn--secondary">
+                                    Login To Members Area
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End Content -->
+
+        </div>
+    </div>
+    <!-- End Section Content Main -->
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
