@@ -133,16 +133,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'main/static/')
-STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'main/media')
-MEDIA_URL = '/media/'
-MEDIA_REL_PATH = 'main/media/'
+if DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'main/static/')
+    STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    ("media", 'main/media/'),
-]
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'main/media')
+    MEDIA_URL = '/media/'
+    MEDIA_REL_PATH = 'main/media/'
+
+    STATICFILES_DIRS = [
+        ("media", 'main/media/'),
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, '../public_html/static/')
+    STATIC_URL = '/static/'
+
+    MEDIA_ROOT = os.path.join(BASE_DIR, '../public_html/static/media')
+    MEDIA_URL = '/media/'
+    MEDIA_REL_PATH = '../public_html/static/media/'
+
+    STATICFILES_DIRS = [
+        ("media", '../public_html/static/media/'),
+    ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
